@@ -7,31 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C38D244283D14FE0081B0C9 /* ControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D243283D14FE0081B0C9 /* ControllerUtils.swift */; };
+		1C38D246283DE45C0081B0C9 /* PreRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D245283DE45C0081B0C9 /* PreRegister.swift */; };
+		1C38D248283E26140081B0C9 /* TransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D247283E26140081B0C9 /* TransactionController.swift */; };
+		1C8CFE5C283D00F90045F23B /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE5B283D00F90045F23B /* Context.swift */; };
+		1C8CFE5F283D081A0045F23B /* CDCNAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE5E283D081A0045F23B /* CDCNAuth.swift */; };
+		1C8CFE61283D0B250045F23B /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE60283D0B250045F23B /* Register.swift */; };
+		1C8CFE65283D11F80045F23B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE64283D11F80045F23B /* LoginController.swift */; };
 		1CA2453E28364C8F0013EF32 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2453D28364C8F0013EF32 /* GeneralResponse.swift */; };
-		1CA24540283776B90013EF32 /* CDCNAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2453F283776B90013EF32 /* CDCNAuthResponse.swift */; };
 		1CB571E8283627AE0016A911 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571E7283627AE0016A911 /* AppDelegate.swift */; };
 		1CB571EA283627AE0016A911 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571E9283627AE0016A911 /* SceneDelegate.swift */; };
-		1CB571EC283627AE0016A911 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571EB283627AE0016A911 /* ViewController.swift */; };
+		1CB571EC283627AE0016A911 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571EB283627AE0016A911 /* RegisterController.swift */; };
 		1CB571EF283627AE0016A911 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB571ED283627AE0016A911 /* Main.storyboard */; };
 		1CB571F1283627AF0016A911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CB571F0283627AF0016A911 /* Assets.xcassets */; };
 		1CB571F4283627AF0016A911 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB571F2283627AF0016A911 /* LaunchScreen.storyboard */; };
 		1CB571FE283627D50016A911 /* DigitalOTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571FD283627D50016A911 /* DigitalOTPManager.swift */; };
-		1CB57205283637640016A911 /* QAReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB57204283637640016A911 /* QAReponse.swift */; };
+		1CB57205283637640016A911 /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB57204283637640016A911 /* FAQ.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C38D243283D14FE0081B0C9 /* ControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerUtils.swift; sourceTree = "<group>"; };
+		1C38D245283DE45C0081B0C9 /* PreRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegister.swift; sourceTree = "<group>"; };
+		1C38D247283E26140081B0C9 /* TransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionController.swift; sourceTree = "<group>"; };
+		1C8CFE5B283D00F90045F23B /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		1C8CFE5E283D081A0045F23B /* CDCNAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCNAuth.swift; sourceTree = "<group>"; };
+		1C8CFE60283D0B250045F23B /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		1C8CFE64283D11F80045F23B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1CA2453D28364C8F0013EF32 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
-		1CA2453F283776B90013EF32 /* CDCNAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCNAuthResponse.swift; sourceTree = "<group>"; };
 		1CB571E4283627AE0016A911 /* digital-otp-ios-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "digital-otp-ios-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CB571E7283627AE0016A911 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CB571E9283627AE0016A911 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1CB571EB283627AE0016A911 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1CB571EB283627AE0016A911 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		1CB571EE283627AE0016A911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1CB571F0283627AF0016A911 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CB571F3283627AF0016A911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CB571F5283627AF0016A911 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CB571FD283627D50016A911 /* DigitalOTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalOTPManager.swift; sourceTree = "<group>"; };
-		1CB57204283637640016A911 /* QAReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAReponse.swift; sourceTree = "<group>"; };
+		1CB57204283637640016A911 /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,14 +57,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C8CFE54283786970045F23B /* Response */ = {
+		1C8CFE5D283D08070045F23B /* dto */ = {
 			isa = PBXGroup;
 			children = (
-				1CB57204283637640016A911 /* QAReponse.swift */,
+				1CB57204283637640016A911 /* FAQ.swift */,
 				1CA2453D28364C8F0013EF32 /* GeneralResponse.swift */,
-				1CA2453F283776B90013EF32 /* CDCNAuthResponse.swift */,
+				1C8CFE5E283D081A0045F23B /* CDCNAuth.swift */,
+				1C38D245283DE45C0081B0C9 /* PreRegister.swift */,
+				1C8CFE60283D0B250045F23B /* Register.swift */,
 			);
-			path = Response;
+			path = dto;
 			sourceTree = "<group>";
 		};
 		1CB571DB283627AD0016A911 = {
@@ -74,41 +88,21 @@
 		1CB571E6283627AE0016A911 /* digital-otp-ios-demo */ = {
 			isa = PBXGroup;
 			children = (
+				1C8CFE64283D11F80045F23B /* LoginController.swift */,
+				1CB571EB283627AE0016A911 /* RegisterController.swift */,
+				1C38D247283E26140081B0C9 /* TransactionController.swift */,
+				1C38D243283D14FE0081B0C9 /* ControllerUtils.swift */,
+				1CB571FD283627D50016A911 /* DigitalOTPManager.swift */,
+				1C8CFE5B283D00F90045F23B /* Context.swift */,
+				1C8CFE5D283D08070045F23B /* dto */,
 				1CB571E7283627AE0016A911 /* AppDelegate.swift */,
 				1CB571E9283627AE0016A911 /* SceneDelegate.swift */,
-				1CB571FF283627DB0016A911 /* Model */,
-				1CB571FC283627C00016A911 /* View */,
-				1CB571FB283627B50016A911 /* Controller */,
-				1CB571F0283627AF0016A911 /* Assets.xcassets */,
+				1CB571ED283627AE0016A911 /* Main.storyboard */,
 				1CB571F2283627AF0016A911 /* LaunchScreen.storyboard */,
+				1CB571F0283627AF0016A911 /* Assets.xcassets */,
 				1CB571F5283627AF0016A911 /* Info.plist */,
 			);
 			path = "digital-otp-ios-demo";
-			sourceTree = "<group>";
-		};
-		1CB571FB283627B50016A911 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				1CB571EB283627AE0016A911 /* ViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		1CB571FC283627C00016A911 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1CB571ED283627AE0016A911 /* Main.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1CB571FF283627DB0016A911 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				1CB571FD283627D50016A911 /* DigitalOTPManager.swift */,
-				1C8CFE54283786970045F23B /* Response */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,13 +176,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CB571EC283627AE0016A911 /* ViewController.swift in Sources */,
+				1CB571EC283627AE0016A911 /* RegisterController.swift in Sources */,
 				1CA2453E28364C8F0013EF32 /* GeneralResponse.swift in Sources */,
-				1CB57205283637640016A911 /* QAReponse.swift in Sources */,
+				1C38D244283D14FE0081B0C9 /* ControllerUtils.swift in Sources */,
+				1CB57205283637640016A911 /* FAQ.swift in Sources */,
+				1C38D246283DE45C0081B0C9 /* PreRegister.swift in Sources */,
 				1CB571E8283627AE0016A911 /* AppDelegate.swift in Sources */,
-				1CA24540283776B90013EF32 /* CDCNAuthResponse.swift in Sources */,
+				1C38D248283E26140081B0C9 /* TransactionController.swift in Sources */,
+				1C8CFE61283D0B250045F23B /* Register.swift in Sources */,
+				1C8CFE5C283D00F90045F23B /* Context.swift in Sources */,
 				1CB571FE283627D50016A911 /* DigitalOTPManager.swift in Sources */,
+				1C8CFE5F283D081A0045F23B /* CDCNAuth.swift in Sources */,
 				1CB571EA283627AE0016A911 /* SceneDelegate.swift in Sources */,
+				1C8CFE65283D11F80045F23B /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
