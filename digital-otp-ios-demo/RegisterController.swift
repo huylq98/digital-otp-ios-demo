@@ -42,20 +42,19 @@ class RegisterController: UIViewController {
         }
     }
     
-    @IBAction func questionsAndAnswersButtonPressed(_ sender: UIButton) {
-        print("========== Q&A ==========")
-        digitalOTPManager.faq() { qa in
-            print(qa!)
+    @IBAction func faqButtonPressed(_ sender: UIButton) {
+        print("========== FAQ ==========")
+        digitalOTPManager.faq() { faq in
+            print(faq!)
         }
     }
     
     @IBAction func transactionButtonPressed(_ sender: UIButton) {
-        let transactionController = storyboard?.instantiateViewController(withIdentifier: "transactionView") as? TransactionController
-        guard let transactionController = transactionController else {
-            print("Failed to load transaction view.")
-            return
-        }
-        present(transactionController, animated: true)
+        performSegue(withIdentifier: "toTransactionController", sender: sender)
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return false
     }
     
     private func updateRegisterButton() {

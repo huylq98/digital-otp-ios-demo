@@ -26,17 +26,12 @@ class TransactionController: UIViewController {
         }
         digitalOTPManager.isRegisteredDigitalOTP(msisdn: msisdn, imei: imei) { isRegistered in
             if !isRegistered {
-                let alert = UIAlertController(title: "Thiết bị chưa đăng ký Smart OTP", message: nil, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Đăng ký Smart OTP", style: .default) { alertAction in
-                    let registerController = self.storyboard?.instantiateViewController(withIdentifier: "registerController") as? RegisterController
-                    guard let registerController = registerController else {
-                        print("Trasaction confirmation: failed to load register view.")
-                        return
-                    }
-                    DispatchQueue.main.async {
-                        self.present(registerController, animated: true)
-                    }
+                print("Transaction confirmation: device has not registered Smart OTP.")
+                let alert = UIAlertController(title: "Thiết bị chưa đăng ký Smart OTP", message: "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Đăng ký Smart OTP", style: .default) { handler in
+                    self.performSegue(withIdentifier: "backToRegisterController", sender: sender)
                 })
+                alert.addAction(UIAlertAction(title: "Đóng", style: .cancel))
                 DispatchQueue.main.async {
                     self.present(alert, animated: true)
                 }
@@ -44,4 +39,7 @@ class TransactionController: UIViewController {
         }
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return false
+    }
 }

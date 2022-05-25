@@ -32,11 +32,6 @@ class LoginController: UIViewController {
             print("loginButtonPressed(): imei not found.")
             return
         }
-        
-        guard let digitalOTPController = storyboard?.instantiateViewController(withIdentifier: "registerController") as? RegisterController else {
-            print("Failed to load DigitalOTPController.")
-            return
-        }
         ControllerUtils.showSpinner(onView: self.view, &self.spinner)
         digitalOTPManager.cdcnAuthLogin(msisdn, pin, imei) { accessToken in
             Context.accessToken = accessToken
@@ -45,10 +40,13 @@ class LoginController: UIViewController {
                 self.spinner = nil
             }
             DispatchQueue.main.async {
-                self.present(digitalOTPController, animated: true)
+                self.performSegue(withIdentifier: "toRegisterController", sender: sender)
             }
         }
-        return
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return false
     }
     
     func msisdn(_ input: String?) -> String? {
