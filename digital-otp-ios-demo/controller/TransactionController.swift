@@ -12,7 +12,6 @@ class TransactionController: UIViewController {
     @IBOutlet weak var receivedPhoneNumber: UITextField!
     @IBOutlet weak var amount: UITextField!
     
-    let digitalOTPManager = DigitalOTPManager.shared
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
@@ -40,7 +39,7 @@ class TransactionController: UIViewController {
     }
     
     private func checkRegisterDiginalOTP(msisdn: String, imei: String, _ sender: UIButton) {
-        digitalOTPManager.isRegisteredDigitalOTP(msisdn: msisdn, imei: imei) { isRegistered in
+        SmartOTPService.shared.isRegisteredDigitalOTP(msisdn: msisdn, imei: imei) { isRegistered in
             if !isRegistered {
                 print("Transaction confirmation: device has not registered Smart OTP.")
                 let alert = UIAlertController(title: "Thiết bị chưa đăng ký Smart OTP", message: "", preferredStyle: .alert)

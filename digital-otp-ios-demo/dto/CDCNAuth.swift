@@ -24,20 +24,37 @@ struct CDCNAuth {
         var notifyToken: String
         var typeOs: String = "android"
         var imei: String
+        var requestId: String?
+        var otp: String?
     }
     
     struct Response: Codable {
-        var accessToken: String
-        var refreshToken: String
+        var accessToken: String?
+        var refreshToken: String?
         var username: String
         var userType: String
         var loginType: String
-        var twofaChannelType: String
-        var twofaChannelValue: String
+        var twofaChannelType: String?
+        var twofaChannelValue: String?
         var typeOs: String
         var imei: String
-        var customerName: String
-        var verificationMethod: String
+        var requestId: String?
+        var customerName: String?
+        var verificationMethod: String?
+        var otp: String?
+        var notifyToken: String?
+        var isLoginByToken: Bool?
+        var isLoginByOldToken: Bool?
+        var isByPass: Bool?
+        var smartOtpInfo: SmartOTPInfo?
+    }
+    
+    struct SmartOTPInfo: Codable {
+        var mobileDeviceId: String?
+        var registerStatus: String?
+        var activeStatus: Bool?
+        var userType: String?
+        var phoneModel: String?
+        var isAllowedSmartOtp: Bool
     }
 }
-

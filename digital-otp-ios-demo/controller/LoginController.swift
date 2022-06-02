@@ -12,7 +12,6 @@ class LoginController: UIViewController {
     @IBOutlet weak var msisdnTextField: UITextField!
     @IBOutlet weak var pinTextField: UITextField!
     var spinner: UIView?
-    let digitalOTPManager = DigitalOTPManager.shared
     let keychain = KeychainItem()
     let defaults = UserDefaults.standard
     
@@ -28,12 +27,15 @@ class LoginController: UIViewController {
             fatalError("Failed to login: pin not found.")
         }
         
-        let imei = "VTP_DFCB65E1A8F83065BB52A8E7DD8FCE5C"
+        guard let uuid = UIDevice.current.identifierForVendor?.uuidString else {
+            fatalError("Failed to generated IMEI.")
+        }
+        let imei = "VTP_".appending(uuid)
         defaults.set(msisdn, forKey: Constant.MSISDN)
         defaults.set(imei, forKey: Constant.IMEI)
         
         ControllerUtils.showSpinner(onView: self.view, &self.spinner)
-        digitalOTPManager.cdcnAuthLogin(msisdn, pin, imei) { accessToken in
+        AuthService.shared.cdcnAuthLogin(msisdn, pin, imei) { accessToken in
             ControllerUtils.removeSpinner(self.spinner) {
                 self.spinner = nil
             }

@@ -9,10 +9,10 @@ import Foundation
 import UserNotifications
 
 @available(iOS 10.0, *)
-class NotificationManager {
+class NotificationService {
     private init() {
     }
-    static let shared = NotificationManager()
+    static let shared = NotificationService()
     
     let userNotificationCenter = UNUserNotificationCenter.current()
     

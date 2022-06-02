@@ -42,7 +42,7 @@ class OTPPopUpController: UIViewController {
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
-        DigitalOTPManager.shared.verify(transId: AppConfig.shared.transID, otp: generatedOTP) { isVerified in
+        SmartOTPService.shared.verify(transId: AppConfig.shared.transID, otp: generatedOTP) { isVerified in
             if(isVerified) {
                 DispatchQueue.main.sync {
                     let alert = UIAlertController(title: "Thành công!", message: "Bạn đã thực hiện chuyển tiền thành công.", preferredStyle: .alert)

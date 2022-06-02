@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct DigitalOTPManager {
+struct SmartOTPService {
     let baseURL = "http://localhost:8080"
     let userInfoService = UserInfoService()
     let keychain = KeychainItem()
     let defaults = UserDefaults.standard
     
     // Singleton
-    static let shared = DigitalOTPManager()
+    static let shared = SmartOTPService()
     private init() {}
     
     func cdcnAuthLogin(_ msisdn: String, _ pin: String, _ imei: String, completion: @escaping (String?) -> ()) {
@@ -228,5 +228,20 @@ struct DigitalOTPManager {
                 completion(h.map { String($0) })
             }
         }
+    }
+    
+    func smartOTPStatus(msisdn: String, completion: @escaping (GeneralResponse<SmartOTPStatus.Response>) -> ()) {
+        if let url = URL(string: baseURL.appending("/digital-otp/public/v1/cms/status?msisdn=\(msisdn)")) {
+            var request = URLRequest(url: url)
+            request.addValue(Constant.BEARER_TOKEN, forHTTPHeaderField: "Authorization")
+            AppUtils.doRequest(request: request) { data in
+                let response = AppUtils.decode(json: data, as: GeneralResponse<SmartOTPStatus.Response>.self)
+                guard let response = response else {
+                    fatalError("Failed to check Smart OTP Status for \(msisdn)")
+                }
+                completion(response)
+            }
+        }
+        
     }
 }
