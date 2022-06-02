@@ -7,16 +7,40 @@
 
 import UIKit
 
-class RegisterController: UIViewController {
+class HomeController: UIViewController {
     
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var deregisterButton: UIButton!
     var spinner: UIView?
     
-    let digitalOTPManager = DigitalOTPManager.getInstance()
+    let digitalOTPManager = DigitalOTPManager.shared
+    let keychain = KeychainItem()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let msisdn = defaults.string(forKey: Constant.MSISDN) else {
+            fatalError("Failed to read msisdn.")
+        }
+        guard let imei = defaults.string(forKey: Constant.IMEI) else {
+            fatalError("Failed to read imei.")
+        }
+        if defaults.string(forKey: Constant.USER_STATUS) == nil {
+            digitalOTPManager.isRegisteredDigitalOTP(msisdn: msisdn, imei: imei) { isRegistered in
+                print("is registerd smart otp = \(isRegistered)")
+                if isRegistered {
+                    self.digitalOTPManager.deregister(imei: imei, completion: { isSuccess in
+                        if isSuccess {
+                            AppUtils.pushNotification(notificationID: "deregisterNoti", title: "Smart OTP đã bị huỷ.", content: "Smart OTP trên thiết bị này đã bị huỷ do bạn xoá app. Vui lòng đăng ký lại để sử dụng dịch vụ.", view: self)
+                            DispatchQueue.main.async {
+                                self.updateRegisterButton()
+                            }
+                        }
+                    })
+                }
+            }
+        }
+        
         updateRegisterButton()
     }
     
@@ -32,7 +56,10 @@ class RegisterController: UIViewController {
     
     @IBAction func deregisterButtonPressed(_ sender: UIButton) {
         ControllerUtils.showSpinner(onView: view, &spinner)
-        digitalOTPManager.deregister() { isDeregistered in
+        guard let imei = defaults.string(forKey: Constant.IMEI) else {
+            fatalError("Failed to read imei.")
+        }
+        digitalOTPManager.deregister(imei: imei) { isDeregistered in
             if isDeregistered {
                 ControllerUtils.removeSpinner(self.spinner) {
                     self.spinner = nil
@@ -45,7 +72,7 @@ class RegisterController: UIViewController {
     @IBAction func faqButtonPressed(_ sender: UIButton) {
         print("========== FAQ ==========")
         digitalOTPManager.faq() { faq in
-            print(faq!)
+            print(faq)
         }
     }
     
@@ -58,13 +85,11 @@ class RegisterController: UIViewController {
     }
     
     private func updateRegisterButton() {
-        guard let msisdn = Context.msisdn else {
-            print("updateRegisterButton(): msisdn not found.")
-            return
+        guard let msisdn = defaults.string(forKey: Constant.MSISDN) else {
+            fatalError("Failed to register: msisdn not found.")
         }
-        guard let imei = Context.imei else {
-            print("updateRegisterButton(): imei not found.")
-            return
+        guard let imei = defaults.string(forKey: Constant.IMEI) else {
+            fatalError("Failed to register: imei not found.")
         }
         digitalOTPManager.isRegisteredDigitalOTP(msisdn: msisdn, imei: imei) { isRegistered in
             if isRegistered {

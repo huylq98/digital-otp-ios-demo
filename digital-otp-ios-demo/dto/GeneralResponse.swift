@@ -9,7 +9,7 @@ import Foundation
 
 struct GeneralResponse<T: Codable>: Codable {
     let status: Status
-    let data: T
+    let data: T?
 }
 
 struct Status: Codable {

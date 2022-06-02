@@ -10,53 +10,243 @@
 		1C38D244283D14FE0081B0C9 /* ControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D243283D14FE0081B0C9 /* ControllerUtils.swift */; };
 		1C38D246283DE45C0081B0C9 /* PreRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D245283DE45C0081B0C9 /* PreRegister.swift */; };
 		1C38D248283E26140081B0C9 /* TransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D247283E26140081B0C9 /* TransactionController.swift */; };
-		1C8CFE5C283D00F90045F23B /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE5B283D00F90045F23B /* Context.swift */; };
+		1C3C9DBA283F6CEA001F812F /* HMACAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DA9283F6CEA001F812F /* HMACAlgorithm.swift */; };
+		1C3C9DBB283F6CEA001F812F /* QuestionFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAA283F6CEA001F812F /* QuestionFormatter.swift */; };
+		1C3C9DBC283F6CEA001F812F /* AlgorithmFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAB283F6CEA001F812F /* AlgorithmFactory.swift */; };
+		1C3C9DBD283F6CEA001F812F /* CounterFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAC283F6CEA001F812F /* CounterFormat.swift */; };
+		1C3C9DBE283F6CEA001F812F /* TimestampFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAD283F6CEA001F812F /* TimestampFormat.swift */; };
+		1C3C9DBF283F6CEA001F812F /* SessionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAE283F6CEA001F812F /* SessionInformation.swift */; };
+		1C3C9DC0283F6CEA001F812F /* PasswordAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAF283F6CEA001F812F /* PasswordAlgorithm.swift */; };
+		1C3C9DC1283F6CEA001F812F /* OCRAGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB0283F6CEA001F812F /* OCRAGenerator.swift */; };
+		1C3C9DC2283F6CEA001F812F /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB2283F6CEA001F812F /* DataExtension.swift */; };
+		1C3C9DC3283F6CEA001F812F /* StringExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB3283F6CEA001F812F /* StringExtenstion.swift */; };
+		1C3C9DC4283F6CEA001F812F /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB5283F6CEA001F812F /* UserInfo.swift */; };
+		1C3C9DC5283F6CEA001F812F /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB6283F6CEA001F812F /* UserInfoService.swift */; };
+		1C3C9DC6283F6CEA001F812F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB7283F6CEA001F812F /* Utils.swift */; };
+		1C3C9DC7283F6CEA001F812F /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB9283F6CEA001F812F /* KeychainItem.swift */; };
+		1C3C9DD7283F6D53001F812F /* SwiftECC in Frameworks */ = {isa = PBXBuildFile; productRef = 1C3C9DD6283F6D53001F812F /* SwiftECC */; };
+		1C3C9DDF283F6D7F001F812F /* OCRASwiftTest5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DD8283F6D7E001F812F /* OCRASwiftTest5.swift */; };
+		1C3C9DE0283F6D7F001F812F /* ECCKeyPairTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DD9283F6D7E001F812F /* ECCKeyPairTest.swift */; };
+		1C3C9DE1283F6D7F001F812F /* OCRASwiftTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DDA283F6D7E001F812F /* OCRASwiftTest.swift */; };
+		1C3C9DE2283F6D7F001F812F /* OCRASwiftTest2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DDB283F6D7E001F812F /* OCRASwiftTest2.swift */; };
+		1C3C9DE3283F6D7F001F812F /* OCRASwiftTest3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DDC283F6D7F001F812F /* OCRASwiftTest3.swift */; };
+		1C3C9DE4283F6D7F001F812F /* OCRAConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DDD283F6D7F001F812F /* OCRAConfig.swift */; };
+		1C3C9DE5283F6D7F001F812F /* OCRASwiftTest4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DDE283F6D7F001F812F /* OCRASwiftTest4.swift */; };
+		1C3C9DE7283F8938001F812F /* OTPPopUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DE6283F8938001F812F /* OTPPopUpController.swift */; };
+		1C3C9DEC284069CF001F812F /* Sync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DEB284069CF001F812F /* Sync.swift */; };
+		1C3C9DEE2840706B001F812F /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DED2840706B001F812F /* AppUtils.swift */; };
+		1C3C9DF028407465001F812F /* Verify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DEF28407465001F812F /* Verify.swift */; };
 		1C8CFE5F283D081A0045F23B /* CDCNAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE5E283D081A0045F23B /* CDCNAuth.swift */; };
 		1C8CFE61283D0B250045F23B /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE60283D0B250045F23B /* Register.swift */; };
 		1C8CFE65283D11F80045F23B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE64283D11F80045F23B /* LoginController.swift */; };
 		1CA2453E28364C8F0013EF32 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2453D28364C8F0013EF32 /* GeneralResponse.swift */; };
+		1CACA6D42844E0020071EF6F /* SmartOTPTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CACA6D32844E0020071EF6F /* SmartOTPTest.swift */; };
+		1CB18C212848689500F635AA /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB18C202848689500F635AA /* Constant.swift */; };
+		1CB18C232848796F00F635AA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB18C222848796F00F635AA /* NotificationManager.swift */; };
 		1CB571E8283627AE0016A911 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571E7283627AE0016A911 /* AppDelegate.swift */; };
 		1CB571EA283627AE0016A911 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571E9283627AE0016A911 /* SceneDelegate.swift */; };
-		1CB571EC283627AE0016A911 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571EB283627AE0016A911 /* RegisterController.swift */; };
+		1CB571EC283627AE0016A911 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571EB283627AE0016A911 /* HomeController.swift */; };
 		1CB571EF283627AE0016A911 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB571ED283627AE0016A911 /* Main.storyboard */; };
 		1CB571F1283627AF0016A911 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CB571F0283627AF0016A911 /* Assets.xcassets */; };
 		1CB571F4283627AF0016A911 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB571F2283627AF0016A911 /* LaunchScreen.storyboard */; };
 		1CB571FE283627D50016A911 /* DigitalOTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571FD283627D50016A911 /* DigitalOTPManager.swift */; };
 		1CB57205283637640016A911 /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB57204283637640016A911 /* FAQ.swift */; };
+		1CB76BD628485349008B297D /* ECCKeyCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB76BD528485349008B297D /* ECCKeyCryptor.swift */; };
+		1CC152DA28445B2C00B92420 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC152D928445B2C00B92420 /* AppConfig.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1C3C9DD0283F6D08001F812F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1CB571DC283627AD0016A911 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1CB571E3283627AE0016A911;
+			remoteInfo = "digital-otp-ios-demo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1C3C9CD7283F5EDE001F812F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1C38D243283D14FE0081B0C9 /* ControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerUtils.swift; sourceTree = "<group>"; };
 		1C38D245283DE45C0081B0C9 /* PreRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegister.swift; sourceTree = "<group>"; };
 		1C38D247283E26140081B0C9 /* TransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionController.swift; sourceTree = "<group>"; };
-		1C8CFE5B283D00F90045F23B /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		1C3C9D0B283F6C45001F812F /* digital-otp-ios-demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "digital-otp-ios-demo-Bridging-Header.h"; sourceTree = "<group>"; };
+		1C3C9DA9283F6CEA001F812F /* HMACAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMACAlgorithm.swift; sourceTree = "<group>"; };
+		1C3C9DAA283F6CEA001F812F /* QuestionFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionFormatter.swift; sourceTree = "<group>"; };
+		1C3C9DAB283F6CEA001F812F /* AlgorithmFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmFactory.swift; sourceTree = "<group>"; };
+		1C3C9DAC283F6CEA001F812F /* CounterFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterFormat.swift; sourceTree = "<group>"; };
+		1C3C9DAD283F6CEA001F812F /* TimestampFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimestampFormat.swift; sourceTree = "<group>"; };
+		1C3C9DAE283F6CEA001F812F /* SessionInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionInformation.swift; sourceTree = "<group>"; };
+		1C3C9DAF283F6CEA001F812F /* PasswordAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordAlgorithm.swift; sourceTree = "<group>"; };
+		1C3C9DB0283F6CEA001F812F /* OCRAGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRAGenerator.swift; sourceTree = "<group>"; };
+		1C3C9DB2283F6CEA001F812F /* DataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
+		1C3C9DB3283F6CEA001F812F /* StringExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtenstion.swift; sourceTree = "<group>"; };
+		1C3C9DB5283F6CEA001F812F /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		1C3C9DB6283F6CEA001F812F /* UserInfoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
+		1C3C9DB7283F6CEA001F812F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		1C3C9DB9283F6CEA001F812F /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
+		1C3C9DCC283F6D08001F812F /* digital-otp-ios-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "digital-otp-ios-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C3C9DD8283F6D7E001F812F /* OCRASwiftTest5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRASwiftTest5.swift; sourceTree = "<group>"; };
+		1C3C9DD9283F6D7E001F812F /* ECCKeyPairTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECCKeyPairTest.swift; sourceTree = "<group>"; };
+		1C3C9DDA283F6D7E001F812F /* OCRASwiftTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRASwiftTest.swift; sourceTree = "<group>"; };
+		1C3C9DDB283F6D7E001F812F /* OCRASwiftTest2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRASwiftTest2.swift; sourceTree = "<group>"; };
+		1C3C9DDC283F6D7F001F812F /* OCRASwiftTest3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRASwiftTest3.swift; sourceTree = "<group>"; };
+		1C3C9DDD283F6D7F001F812F /* OCRAConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRAConfig.swift; sourceTree = "<group>"; };
+		1C3C9DDE283F6D7F001F812F /* OCRASwiftTest4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRASwiftTest4.swift; sourceTree = "<group>"; };
+		1C3C9DE6283F8938001F812F /* OTPPopUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPPopUpController.swift; sourceTree = "<group>"; };
+		1C3C9DEB284069CF001F812F /* Sync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sync.swift; sourceTree = "<group>"; };
+		1C3C9DED2840706B001F812F /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
+		1C3C9DEF28407465001F812F /* Verify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verify.swift; sourceTree = "<group>"; };
 		1C8CFE5E283D081A0045F23B /* CDCNAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCNAuth.swift; sourceTree = "<group>"; };
 		1C8CFE60283D0B250045F23B /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		1C8CFE64283D11F80045F23B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1CA2453D28364C8F0013EF32 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
+		1CACA6D32844E0020071EF6F /* SmartOTPTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartOTPTest.swift; sourceTree = "<group>"; };
+		1CB18C202848689500F635AA /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		1CB18C222848796F00F635AA /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		1CB571E4283627AE0016A911 /* digital-otp-ios-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "digital-otp-ios-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CB571E7283627AE0016A911 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CB571E9283627AE0016A911 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1CB571EB283627AE0016A911 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		1CB571EB283627AE0016A911 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		1CB571EE283627AE0016A911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1CB571F0283627AF0016A911 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CB571F3283627AF0016A911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CB571F5283627AF0016A911 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CB571FD283627D50016A911 /* DigitalOTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalOTPManager.swift; sourceTree = "<group>"; };
 		1CB57204283637640016A911 /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
+		1CB76BD528485349008B297D /* ECCKeyCryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ECCKeyCryptor.swift; sourceTree = "<group>"; };
+		1CC152D928445B2C00B92420 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1CB571E1283627AE0016A911 /* Frameworks */ = {
+		1C3C9DC9283F6D08001F812F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1CB571E1283627AE0016A911 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C3C9DD7283F6D53001F812F /* SwiftECC in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C3C9DA7283F6CEA001F812F /* OCRA */ = {
+			isa = PBXGroup;
+			children = (
+				1C3C9DA8283F6CEA001F812F /* Algorithm */,
+				1C3C9DB0283F6CEA001F812F /* OCRAGenerator.swift */,
+				1C3C9DB1283F6CEA001F812F /* Extensions */,
+			);
+			path = OCRA;
+			sourceTree = "<group>";
+		};
+		1C3C9DA8283F6CEA001F812F /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				1C3C9DA9283F6CEA001F812F /* HMACAlgorithm.swift */,
+				1C3C9DAA283F6CEA001F812F /* QuestionFormatter.swift */,
+				1C3C9DAB283F6CEA001F812F /* AlgorithmFactory.swift */,
+				1C3C9DAC283F6CEA001F812F /* CounterFormat.swift */,
+				1C3C9DAD283F6CEA001F812F /* TimestampFormat.swift */,
+				1C3C9DAE283F6CEA001F812F /* SessionInformation.swift */,
+				1C3C9DAF283F6CEA001F812F /* PasswordAlgorithm.swift */,
+			);
+			path = Algorithm;
+			sourceTree = "<group>";
+		};
+		1C3C9DB1283F6CEA001F812F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1C3C9DB2283F6CEA001F812F /* DataExtension.swift */,
+				1C3C9DB3283F6CEA001F812F /* StringExtenstion.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1C3C9DB4283F6CEA001F812F /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				1C3C9DB5283F6CEA001F812F /* UserInfo.swift */,
+				1C3C9DB6283F6CEA001F812F /* UserInfoService.swift */,
+				1C3C9DB7283F6CEA001F812F /* Utils.swift */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		1C3C9DB8283F6CEA001F812F /* ECC */ = {
+			isa = PBXGroup;
+			children = (
+				1C3C9DB9283F6CEA001F812F /* KeychainItem.swift */,
+			);
+			path = ECC;
+			sourceTree = "<group>";
+		};
+		1C3C9DCD283F6D08001F812F /* digital-otp-ios-demoTests */ = {
+			isa = PBXGroup;
+			children = (
+				1C3C9DD9283F6D7E001F812F /* ECCKeyPairTest.swift */,
+				1CB76BD528485349008B297D /* ECCKeyCryptor.swift */,
+				1C3C9DDD283F6D7F001F812F /* OCRAConfig.swift */,
+				1C3C9DDA283F6D7E001F812F /* OCRASwiftTest.swift */,
+				1C3C9DDB283F6D7E001F812F /* OCRASwiftTest2.swift */,
+				1C3C9DDC283F6D7F001F812F /* OCRASwiftTest3.swift */,
+				1C3C9DDE283F6D7F001F812F /* OCRASwiftTest4.swift */,
+				1C3C9DD8283F6D7E001F812F /* OCRASwiftTest5.swift */,
+				1CACA6D32844E0020071EF6F /* SmartOTPTest.swift */,
+			);
+			path = "digital-otp-ios-demoTests";
+			sourceTree = "<group>";
+		};
+		1C3C9DE828406970001F812F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				1C8CFE64283D11F80045F23B /* LoginController.swift */,
+				1CB571EB283627AE0016A911 /* HomeController.swift */,
+				1C38D247283E26140081B0C9 /* TransactionController.swift */,
+				1C3C9DE6283F8938001F812F /* OTPPopUpController.swift */,
+				1C38D243283D14FE0081B0C9 /* ControllerUtils.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		1C3C9DE92840697D001F812F /* service */ = {
+			isa = PBXGroup;
+			children = (
+				1CB571FD283627D50016A911 /* DigitalOTPManager.swift */,
+				1CB18C222848796F00F635AA /* NotificationManager.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		1C3C9DEA2840698C001F812F /* ocra */ = {
+			isa = PBXGroup;
+			children = (
+				1C3C9DB8283F6CEA001F812F /* ECC */,
+				1C3C9DA7283F6CEA001F812F /* OCRA */,
+				1C3C9DB4283F6CEA001F812F /* UserInfo */,
+			);
+			path = ocra;
+			sourceTree = "<group>";
+		};
 		1C8CFE5D283D08070045F23B /* dto */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +255,8 @@
 				1C8CFE5E283D081A0045F23B /* CDCNAuth.swift */,
 				1C38D245283DE45C0081B0C9 /* PreRegister.swift */,
 				1C8CFE60283D0B250045F23B /* Register.swift */,
+				1C3C9DEB284069CF001F812F /* Sync.swift */,
+				1C3C9DEF28407465001F812F /* Verify.swift */,
 			);
 			path = dto;
 			sourceTree = "<group>";
@@ -73,7 +265,9 @@
 			isa = PBXGroup;
 			children = (
 				1CB571E6283627AE0016A911 /* digital-otp-ios-demo */,
+				1C3C9DCD283F6D08001F812F /* digital-otp-ios-demoTests */,
 				1CB571E5283627AE0016A911 /* Products */,
+				1C3C9D0B283F6C45001F812F /* digital-otp-ios-demo-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				1CB571E4283627AE0016A911 /* digital-otp-ios-demo.app */,
+				1C3C9DCC283F6D08001F812F /* digital-otp-ios-demoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,39 +283,88 @@
 		1CB571E6283627AE0016A911 /* digital-otp-ios-demo */ = {
 			isa = PBXGroup;
 			children = (
-				1C8CFE64283D11F80045F23B /* LoginController.swift */,
-				1CB571EB283627AE0016A911 /* RegisterController.swift */,
-				1C38D247283E26140081B0C9 /* TransactionController.swift */,
-				1C38D243283D14FE0081B0C9 /* ControllerUtils.swift */,
-				1CB571FD283627D50016A911 /* DigitalOTPManager.swift */,
-				1C8CFE5B283D00F90045F23B /* Context.swift */,
+				1CC152DB28445B3B00B92420 /* config */,
+				1C3C9DE828406970001F812F /* controller */,
+				1C3C9DE92840697D001F812F /* service */,
+				1C3C9DEA2840698C001F812F /* ocra */,
 				1C8CFE5D283D08070045F23B /* dto */,
+				1CC152DC28445B6500B92420 /* utils */,
 				1CB571E7283627AE0016A911 /* AppDelegate.swift */,
 				1CB571E9283627AE0016A911 /* SceneDelegate.swift */,
 				1CB571ED283627AE0016A911 /* Main.storyboard */,
 				1CB571F2283627AF0016A911 /* LaunchScreen.storyboard */,
 				1CB571F0283627AF0016A911 /* Assets.xcassets */,
 				1CB571F5283627AF0016A911 /* Info.plist */,
+				1CB18C202848689500F635AA /* Constant.swift */,
 			);
 			path = "digital-otp-ios-demo";
 			sourceTree = "<group>";
 		};
+		1CC152DB28445B3B00B92420 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				1CC152D928445B2C00B92420 /* AppConfig.swift */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		1CC152DC28445B6500B92420 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				1C3C9DED2840706B001F812F /* AppUtils.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		1C01F21A283F5A3200481341 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		1C3C9DCB283F6D08001F812F /* digital-otp-ios-demoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1C3C9DD2283F6D08001F812F /* Build configuration list for PBXNativeTarget "digital-otp-ios-demoTests" */;
+			buildPhases = (
+				1C3C9DC8283F6D08001F812F /* Sources */,
+				1C3C9DC9283F6D08001F812F /* Frameworks */,
+				1C3C9DCA283F6D08001F812F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1C3C9DD1283F6D08001F812F /* PBXTargetDependency */,
+			);
+			name = "digital-otp-ios-demoTests";
+			productName = "digital-otp-ios-demoTests";
+			productReference = 1C3C9DCC283F6D08001F812F /* digital-otp-ios-demoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		1CB571E3283627AE0016A911 /* digital-otp-ios-demo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1CB571F8283627AF0016A911 /* Build configuration list for PBXNativeTarget "digital-otp-ios-demo" */;
 			buildPhases = (
+				1C01F21A283F5A3200481341 /* Headers */,
 				1CB571E0283627AE0016A911 /* Sources */,
 				1CB571E1283627AE0016A911 /* Frameworks */,
 				1CB571E2283627AE0016A911 /* Resources */,
+				1C3C9CD7283F5EDE001F812F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "digital-otp-ios-demo";
+			packageProductDependencies = (
+				1C3C9DD6283F6D53001F812F /* SwiftECC */,
+			);
 			productName = "digital-otp-ios-demo";
 			productReference = 1CB571E4283627AE0016A911 /* digital-otp-ios-demo.app */;
 			productType = "com.apple.product-type.application";
@@ -135,8 +379,13 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					1C3C9DCB283F6D08001F812F = {
+						CreatedOnToolsVersion = 13.4;
+						TestTargetID = 1CB571E3283627AE0016A911;
+					};
 					1CB571E3283627AE0016A911 = {
 						CreatedOnToolsVersion = 13.4;
+						LastSwiftMigration = 1340;
 					};
 				};
 			};
@@ -149,16 +398,27 @@
 				Base,
 			);
 			mainGroup = 1CB571DB283627AD0016A911;
+			packageReferences = (
+				1C3C9DD5283F6D53001F812F /* XCRemoteSwiftPackageReference "SwiftECC" */,
+			);
 			productRefGroup = 1CB571E5283627AE0016A911 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				1CB571E3283627AE0016A911 /* digital-otp-ios-demo */,
+				1C3C9DCB283F6D08001F812F /* digital-otp-ios-demoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1C3C9DCA283F6D08001F812F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CB571E2283627AE0016A911 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -172,27 +432,71 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1C3C9DC8283F6D08001F812F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1C3C9DE3283F6D7F001F812F /* OCRASwiftTest3.swift in Sources */,
+				1C3C9DE4283F6D7F001F812F /* OCRAConfig.swift in Sources */,
+				1C3C9DE1283F6D7F001F812F /* OCRASwiftTest.swift in Sources */,
+				1C3C9DE2283F6D7F001F812F /* OCRASwiftTest2.swift in Sources */,
+				1CB76BD628485349008B297D /* ECCKeyCryptor.swift in Sources */,
+				1C3C9DE0283F6D7F001F812F /* ECCKeyPairTest.swift in Sources */,
+				1CACA6D42844E0020071EF6F /* SmartOTPTest.swift in Sources */,
+				1C3C9DE5283F6D7F001F812F /* OCRASwiftTest4.swift in Sources */,
+				1C3C9DDF283F6D7F001F812F /* OCRASwiftTest5.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1CB571E0283627AE0016A911 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CB571EC283627AE0016A911 /* RegisterController.swift in Sources */,
+				1C3C9DC7283F6CEA001F812F /* KeychainItem.swift in Sources */,
+				1CC152DA28445B2C00B92420 /* AppConfig.swift in Sources */,
+				1CB18C232848796F00F635AA /* NotificationManager.swift in Sources */,
+				1C3C9DEC284069CF001F812F /* Sync.swift in Sources */,
+				1CB571EC283627AE0016A911 /* HomeController.swift in Sources */,
+				1C3C9DC3283F6CEA001F812F /* StringExtenstion.swift in Sources */,
+				1C3C9DC6283F6CEA001F812F /* Utils.swift in Sources */,
+				1C3C9DBA283F6CEA001F812F /* HMACAlgorithm.swift in Sources */,
+				1C3C9DC4283F6CEA001F812F /* UserInfo.swift in Sources */,
+				1CB18C212848689500F635AA /* Constant.swift in Sources */,
 				1CA2453E28364C8F0013EF32 /* GeneralResponse.swift in Sources */,
 				1C38D244283D14FE0081B0C9 /* ControllerUtils.swift in Sources */,
 				1CB57205283637640016A911 /* FAQ.swift in Sources */,
+				1C3C9DBE283F6CEA001F812F /* TimestampFormat.swift in Sources */,
+				1C3C9DBD283F6CEA001F812F /* CounterFormat.swift in Sources */,
 				1C38D246283DE45C0081B0C9 /* PreRegister.swift in Sources */,
 				1CB571E8283627AE0016A911 /* AppDelegate.swift in Sources */,
 				1C38D248283E26140081B0C9 /* TransactionController.swift in Sources */,
+				1C3C9DEE2840706B001F812F /* AppUtils.swift in Sources */,
 				1C8CFE61283D0B250045F23B /* Register.swift in Sources */,
-				1C8CFE5C283D00F90045F23B /* Context.swift in Sources */,
+				1C3C9DC0283F6CEA001F812F /* PasswordAlgorithm.swift in Sources */,
 				1CB571FE283627D50016A911 /* DigitalOTPManager.swift in Sources */,
+				1C3C9DF028407465001F812F /* Verify.swift in Sources */,
+				1C3C9DE7283F8938001F812F /* OTPPopUpController.swift in Sources */,
+				1C3C9DBF283F6CEA001F812F /* SessionInformation.swift in Sources */,
 				1C8CFE5F283D081A0045F23B /* CDCNAuth.swift in Sources */,
+				1C3C9DC5283F6CEA001F812F /* UserInfoService.swift in Sources */,
+				1C3C9DBC283F6CEA001F812F /* AlgorithmFactory.swift in Sources */,
 				1CB571EA283627AE0016A911 /* SceneDelegate.swift in Sources */,
 				1C8CFE65283D11F80045F23B /* LoginController.swift in Sources */,
+				1C3C9DBB283F6CEA001F812F /* QuestionFormatter.swift in Sources */,
+				1C3C9DC1283F6CEA001F812F /* OCRAGenerator.swift in Sources */,
+				1C3C9DC2283F6CEA001F812F /* DataExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1C3C9DD1283F6D08001F812F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1CB571E3283627AE0016A911 /* digital-otp-ios-demo */;
+			targetProxy = 1C3C9DD0283F6D08001F812F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1CB571ED283627AE0016A911 /* Main.storyboard */ = {
@@ -214,6 +518,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1C3C9DD3283F6D08001F812F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LYZF537KR9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vn.com.viettel.vds.digital-otp-ios-demoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/digital-otp-ios-demo.app/digital-otp-ios-demo";
+			};
+			name = Debug;
+		};
+		1C3C9DD4283F6D08001F812F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LYZF537KR9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "vn.com.viettel.vds.digital-otp-ios-demoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/digital-otp-ios-demo.app/digital-otp-ios-demo";
+			};
+			name = Release;
+		};
 		1CB571F6283627AF0016A911 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -264,7 +606,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -318,7 +660,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -333,6 +675,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LYZF537KR9;
@@ -341,8 +684,10 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -351,6 +696,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "vn.com.viettel.vds.digital-otp-ios-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "digital-otp-ios-demo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -361,16 +708,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LYZF537KR9;
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = "@executable_path/Frameworks";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "digital-otp-ios-demo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -379,6 +730,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "vn.com.viettel.vds.digital-otp-ios-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "digital-otp-ios-demo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -387,6 +739,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1C3C9DD2283F6D08001F812F /* Build configuration list for PBXNativeTarget "digital-otp-ios-demoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1C3C9DD3283F6D08001F812F /* Debug */,
+				1C3C9DD4283F6D08001F812F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1CB571DF283627AD0016A911 /* Build configuration list for PBXProject "digital-otp-ios-demo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -406,6 +767,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1C3C9DD5283F6D53001F812F /* XCRemoteSwiftPackageReference "SwiftECC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/leif-ibsen/SwiftECC";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C3C9DD6283F6D53001F812F /* SwiftECC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C3C9DD5283F6D53001F812F /* XCRemoteSwiftPackageReference "SwiftECC" */;
+			productName = SwiftECC;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1CB571DC283627AD0016A911 /* Project object */;
 }

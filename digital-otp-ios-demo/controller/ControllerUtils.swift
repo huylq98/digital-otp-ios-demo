@@ -12,7 +12,13 @@ struct ControllerUtils {
     static func showSpinner(onView view: UIView, _ spinner: inout UIView?) {
         let spinnerView = UIView.init(frame: view.bounds)
         spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        let ai = UIActivityIndicatorView.init(style: .large)
+        let ai: UIActivityIndicatorView
+        if #available(iOS 13.0, *) {
+            ai = UIActivityIndicatorView.init(style: .large)
+        } else {
+            // Fallback on earlier versions
+            ai = UIActivityIndicatorView.init(style: .whiteLarge)
+        }
         ai.startAnimating()
         ai.center = spinnerView.center
         
@@ -20,7 +26,6 @@ struct ControllerUtils {
             spinnerView.addSubview(ai)
             view.addSubview(spinnerView)
         }
-        
         spinner = spinnerView
     }
     
