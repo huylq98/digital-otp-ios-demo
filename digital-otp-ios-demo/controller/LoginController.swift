@@ -14,6 +14,7 @@ class LoginController: UIViewController {
     var spinner: UIView?
     let keychain = KeychainItem()
     let defaults = UserDefaults.standard
+    var loginResponse: GeneralResponse<CDCNAuth.Response>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,16 +35,38 @@ class LoginController: UIViewController {
         print("IMEI = \(imei)")
         defaults.set(msisdn, forKey: Constant.MSISDN)
         defaults.set(imei, forKey: Constant.IMEI)
+        defaults.set(pin, forKey: Constant.PIN)
         
         ControllerUtils.showSpinner(onView: self.view, &self.spinner)
-        AuthService.shared.cdcnAuthLogin(msisdn, pin, imei) { accessToken in
+        AuthService.shared.cdcnAuthLogin(msisdn, pin, imei) { response in
             ControllerUtils.removeSpinner(self.spinner) {
                 self.spinner = nil
             }
-            
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: SegueEnum.TO_HOME_CONTROLLER.rawValue, sender: sender)
+            let responseStatus = ResponseStatusEnum(rawValue: response.status.code)
+            switch responseStatus {
+            case .SUCCESS:
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: SegueEnum.TO_HOME_CONTROLLER.rawValue, sender: sender)
+                }
+            case .NEED_VERIFY_OTP:
+                self.loginResponse = response
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: SegueEnum.LOGIN_CONTROLLER_TO_SMS_OTP_CONTROLLER.rawValue, sender: sender)
+                }
+            case .BLOCKED_ACCOUNT, .INVALID_SMS_OTP:
+                var actions: [UIAlertAction] = []
+                actions.append(UIAlertAction(title: "Xác nhận", style: .default))
+                ControllerUtils.alert(self, title: response.status.message, message: response.status.displayMessage ?? "", actions: actions)
+            default:
+                fatalError("Invalid response code: \(responseStatus)")
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueEnum.LOGIN_CONTROLLER_TO_SMS_OTP_CONTROLLER.rawValue {
+            let destinationVC = segue.destination as! LoginSMSOTPController
+            destinationVC.requestId = loginResponse?.data?.requestId
         }
     }
     

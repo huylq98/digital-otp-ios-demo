@@ -13,7 +13,7 @@ class AuthService {
     
     let defaults = UserDefaults.standard
     
-    func cdcnAuthLogin(_ msisdn: String, _ pin: String, _ imei: String, completion: @escaping (String?) -> ()) {
+    func cdcnAuthLogin(_ msisdn: String, _ pin: String, _ imei: String, _ requestId: String? = nil, _ otp: String? = nil, completion: @escaping (GeneralResponse<CDCNAuth.Response>) -> ()) {
         if let url = URL(string: "http://125.235.38.229:8080".appending("/auth/v1/authn/login")) {
             var request = URLRequest(url: url)
             
@@ -28,37 +28,24 @@ class AuthService {
             
             // HTTP Body
             var body = CDCNAuth.Request(msisdn: msisdn, pin: pin, imei: imei)
+            if let requestId = requestId,
+               let otp = otp {
+                body.requestId = requestId
+                body.otp = otp
+            }
             request.httpBody = AppUtils.encode(object: body)
             AppUtils.doRequest(request: request) { data in
-                var response = AppUtils.decode(json: data, as: GeneralResponse<CDCNAuth.Response>.self)
+                let response = AppUtils.decode(json: data, as: GeneralResponse<CDCNAuth.Response>.self)
                 print("========== LOGIN RESPONSE ==========")
+                guard let response = response else {
+                    fatalError("Invalid response: \(response)")
+                }
                 print(response)
-                // Cần xác thực SMS OTP
-                if response?.status.code == ResponseStatusEnum.NEED_VERIFY_OTP.rawValue {
-                    print("Need verify OTP")
-                    body.requestId = response?.data?.requestId
-                    body.otp = "1111" // TODO: Hardcode for STAGING
-                    request.httpBody = AppUtils.encode(object: body)
-                    AppUtils.doRequest(request: request) { data in
-                        response = AppUtils.decode(json: data, as: GeneralResponse<CDCNAuth.Response>.self)
-                        guard let accessToken = response?.data?.accessToken else {
-                            fatalError("cdcnAuthLogin(): Failed to get access token.")
-                        }
-                        self.defaults.set(accessToken, forKey: Constant.ACCESS_TOKEN)
-                        // sync
-                        SmartOTPService.shared.isRegisteredDigitalOTP() { isRegistered in
-                            if isRegistered {
-                                SmartOTPService.shared.sync (isRegistered: isRegistered) { serverTime in
-                                    self.defaults.set(serverTime - AppUtils.currentTime(), forKey: Constant.DELTA_TIME)
-                                }
-                            }
-                        }
-                        print("Access token = \(accessToken)")
-                        completion(accessToken)
-                    }
-                } else if response?.status.code == "00" {
-                    guard let accessToken = response?.data?.accessToken else {
-                        fatalError("cdcnAuthLogin(): Failed to get access token.")
+                let responseStatus = ResponseStatusEnum(rawValue: response.status.code)
+                switch responseStatus {
+                case .SUCCESS:
+                    guard let accessToken = response.data?.accessToken else {
+                        fatalError("Failed to get access token.")
                     }
                     self.defaults.set(accessToken, forKey: Constant.ACCESS_TOKEN)
                     // sync
@@ -70,8 +57,16 @@ class AuthService {
                         }
                     }
                     print("Access token = \(accessToken)")
-                    completion(accessToken)
-                } else {
+                    completion(response)
+                case .NEED_VERIFY_OTP:
+                    completion(response)
+                case .WRONG_SMS_OTP:
+                    completion(response)
+                case .BLOCKED_ACCOUNT:
+                    completion(response)
+                case .INVALID_SMS_OTP:
+                    completion(response)
+                default:
                     fatalError("Failed to login.")
                 }
             }

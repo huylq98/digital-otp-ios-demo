@@ -29,6 +29,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" smartDashesType="yes" textContentType="tel"/>
+                                <connections>
+                                    <segue destination="nOM-d3-i6f" kind="presentation" identifier="LoginControllerToSMSOTPController" modalPresentationStyle="fullScreen" id="RKc-la-0kX"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="123123" borderStyle="roundedRect" placeholder="Nhập mã pin" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rrO-JO-at1">
                                 <rect key="frame" x="87" y="411" width="241" height="34"/>
@@ -87,6 +90,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="registerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pn6-7X-rVG"/>
+                                    <segue destination="KHf-6S-bpo" kind="presentation" identifier="HomeControllerToRegisterSMSOTPController" modalPresentationStyle="fullScreen" id="3EA-UX-XRY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aev-2o-hw8">
@@ -319,10 +323,10 @@
             </objects>
             <point key="canvasLocation" x="2234.7826086956525" y="-575.22321428571422"/>
         </scene>
-        <!--SMSOTPController-->
+        <!--LoginSMSOTPController-->
         <scene sceneID="nv4-ww-Qq9">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="nOM-d3-i6f" userLabel="SMSOTPController" customClass="SMSOTPController" customModule="digital_otp_ios_demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overCurrentContext" id="nOM-d3-i6f" userLabel="LoginSMSOTPController" customClass="LoginSMSOTPController" customModule="digital_otp_ios_demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fec-Wy-dck">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -354,8 +358,8 @@
                                             </attributedString>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="backButtonPressed:" destination="nOM-d3-i6f" eventType="touchUpInside" id="Yqd-51-OrV"/>
-                                            <action selector="cancelButtonPressed:" destination="nOM-d3-i6f" eventType="touchUpInside" id="vnW-J7-gur"/>
+                                            <action selector="backButtonPressed:" destination="nOM-d3-i6f" eventType="touchUpInside" id="eVS-HQ-2AZ"/>
+                                            <segue destination="2j5-id-0gd" kind="presentation" identifier="SMSOTPControllerBackToLoginController" modalPresentationStyle="fullScreen" id="WDQ-Vi-y8h"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fKY-zH-VXk">
@@ -375,6 +379,7 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="confirmButtonPressed:" destination="nOM-d3-i6f" eventType="touchUpInside" id="57G-6x-DNP"/>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="SMSOTPControllerToHomeController" modalPresentationStyle="fullScreen" id="D2U-c7-eUO"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQj-97-PXy">
@@ -397,7 +402,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vui lòng nhập mã OTP được gửi về SĐT để xác nhận đăng ký Smart OTP" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3f-pk-b7B">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vui lòng nhập mã OTP được gửi về SĐT để đăng nhập" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3f-pk-b7B">
                                         <rect key="frame" x="38" y="63" width="299" height="99"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
@@ -412,19 +417,122 @@
                         <color key="backgroundColor" red="0.81115856369999995" green="0.81115856369999995" blue="0.81115856369999995" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <connections>
+                        <outlet property="confirmButton" destination="fKY-zH-VXk" id="OMp-sL-tMD"/>
                         <outlet property="countdownLabel" destination="bQj-97-PXy" id="YPU-iX-pkE"/>
+                        <outlet property="informationText" destination="b3f-pk-b7B" id="pm1-uS-yen"/>
                         <outlet property="smsOtpText" destination="PDe-nY-yCB" id="7fY-1z-vVI"/>
-                        <outlet property="transactionInfoLabel" destination="b3f-pk-b7B" id="jTv-CO-Hlx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vVC-jD-CZi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="963.76811594202911" y="135.9375"/>
+            <point key="canvasLocation" x="-297" y="147"/>
+        </scene>
+        <!--RegisterSMSOTPController-->
+        <scene sceneID="GQl-jS-cp5">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="KHf-6S-bpo" userLabel="RegisterSMSOTPController" customClass="RegisterSMSOTPController" customModule="digital_otp_ios_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WaI-nJ-Ohr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="paC-l7-0gE">
+                                <rect key="frame" x="20" y="282" width="374" height="327"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Xác thực OTP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbM-fU-OWw">
+                                        <rect key="frame" x="113" y="29" width="148" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVh-zF-lYv">
+                                        <rect key="frame" x="0.0" y="272" width="185" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Bỏ qua">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.52865296277019236" green="0.52625780724698745" blue="0.55292526717038504" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <font key="NSFont" size="20" name="Helvetica"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="KHf-6S-bpo" eventType="touchUpInside" id="M2S-LX-BqI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bmh-M7-f9j">
+                                        <rect key="frame" x="184" y="272" width="190" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Xác nhận">
+                                                    <attributes>
+                                                        <color key="NSColor" red="1" green="0.033689415672600309" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <font key="NSFont" size="20" name="Helvetica-Bold"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="confirmButtonPressed:" destination="KHf-6S-bpo" eventType="touchUpInside" id="3ZJ-ic-IlL"/>
+                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="RegisterSMSOTPControllerToHomeController" modalPresentationStyle="fullScreen" id="EaB-tq-BHN"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmw-0S-Go5">
+                                        <rect key="frame" x="326" y="202" width="1242" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <color key="textColor" red="0.18238213650000001" green="0.37452839329999998" blue="0.1552681229" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nhập mã OTP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXE-Z1-wDw">
+                                        <rect key="frame" x="19" y="170" width="128" height="23"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZI-Ec-gQB">
+                                        <rect key="frame" x="19" y="202" width="289" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Vui lòng nhập mã OTP được gửi về SĐT để xác nhận đăng ký Smart OTP" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eK4-r6-lfu">
+                                        <rect key="frame" x="38" y="63" width="299" height="99"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="UUG-ca-KcY"/>
+                        <color key="backgroundColor" red="0.81115856369999995" green="0.81115856369999995" blue="0.81115856369999995" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <connections>
+                        <outlet property="countdownLabel" destination="qmw-0S-Go5" id="WyY-oh-pFD"/>
+                        <outlet property="informationLabel" destination="eK4-r6-lfu" id="r2C-jD-eIX"/>
+                        <outlet property="smsOtpText" destination="BZI-Ec-gQB" id="tx4-yh-mEJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TzI-Vv-r10" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="550.72463768115949" y="146.65178571428569"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="W0m-AH-qf8"/>
-        <segue reference="BAc-DN-JF5"/>
+        <segue reference="l34-1p-0H3"/>
+        <segue reference="EaB-tq-BHN"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

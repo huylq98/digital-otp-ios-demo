@@ -14,6 +14,7 @@ class Constant {
     
     public static let MSISDN = "msisdn"
     public static let IMEI = "imei"
+    public static let PIN = "pin"
     public static let ACCESS_TOKEN = "accessToken"
     public static let USER_STATUS = "userStatus"
     public static let DELTA_TIME = "deltaTime"

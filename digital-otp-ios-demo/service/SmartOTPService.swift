@@ -57,38 +57,44 @@ struct SmartOTPService {
         }
     }
     
-    func verifyRegister(completion: @escaping (GeneralResponse<VerifyRegistration.Response>) -> ()) {
-        register() { h in
-            guard let h = h,
-                  let accessToken = defaults.string(forKey: Constant.ACCESS_TOKEN),
-                  let imei = defaults.string(forKey: Constant.IMEI),
-                  let msisdn = defaults.string(forKey: Constant.MSISDN),
-                  let appPublicKey = userInfoService.generatePublicECKey(msisdn: msisdn),
-                  let url = URL(string: baseURL.appending("/digital-otp/public/v1/users/register")) else {
-                fatalError("Failed to register.")
+    func verifyRegister(h: String, otp: String, completion: @escaping (GeneralResponse<VerifyRegistration.Response>) -> ()) {
+        guard let accessToken = defaults.string(forKey: Constant.ACCESS_TOKEN),
+              let imei = defaults.string(forKey: Constant.IMEI),
+              let msisdn = defaults.string(forKey: Constant.MSISDN),
+              let appPublicKey = userInfoService.generatePublicECKey(msisdn: msisdn),
+              let url = URL(string: baseURL.appending("/digital-otp/public/v1/users/register")) else {
+            fatalError("Failed to register.")
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        // HTTP Headers
+        request.addValue(accessToken, forHTTPHeaderField: "Authorization")
+        request.addValue(imei, forHTTPHeaderField: "imei")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        // HTTP Body
+        let body = VerifyRegistration.Request(h: h, app_key: appPublicKey.hexaAsString, otp: otp)
+        print("Register request body: \(body)")
+        request.httpBody = AppUtils.encode(object: body)
+        AppUtils.doRequest(request: request) { data in
+            let response = AppUtils.decode(json: data, as: GeneralResponse<VerifyRegistration.Response>.self)
+            guard let response = response else {
+                fatalError("Invalid response: \(response)")
             }
-            
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            
-            // HTTP Headers
-            request.addValue(accessToken, forHTTPHeaderField: "Authorization")
-            request.addValue(imei, forHTTPHeaderField: "imei")
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            // HTTP Body
-            let body = VerifyRegistration.Request(h: h, app_key: appPublicKey.hexaAsString)
-            print("Register request body: \(body)")
-            request.httpBody = AppUtils.encode(object: body)
-            AppUtils.doRequest(request: request) { data in
-                let response = AppUtils.decode(json: data, as: GeneralResponse<VerifyRegistration.Response>.self)
-                guard let response = response,
-                      let serverPublicKey = response.data?.server_key else {
+            print("========== VERIFY REGISTRATION RESPONSE ==========")
+            print(response)
+            let responseStatus = ResponseStatusEnum(rawValue: response.status.code)
+            switch responseStatus {
+            case .SUCCESS:
+                guard let serverPublicKey = response.data?.server_key else {
                     fatalError("register(): Invalid response \(String(describing: response)).")
                 }
-                print("Regsiter response: \(response)")
                 userInfoService.saveKeys(msisdn: msisdn, serverPublicKey: serverPublicKey, syncTime: AppUtils.currentTime())
                 defaults.set(true, forKey: Constant.USER_STATUS)
+                completion(response)
+            default:
                 completion(response)
             }
         }

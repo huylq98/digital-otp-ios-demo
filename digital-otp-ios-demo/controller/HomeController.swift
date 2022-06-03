@@ -15,6 +15,7 @@ class HomeController: UIViewController {
     
     let keychain = KeychainItem()
     let defaults = UserDefaults.standard
+    var h: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,11 +42,11 @@ class HomeController: UIViewController {
             let statusCode = ResponseStatusEnum(rawValue: data.status.code)
             switch statusCode {
             case .SUCCESS:
-                self.confirmRegister()
+                self.confirmRegister(sender)
             case .REGISTERED_ON_ANOTHER_DEVICE:
                 let actions: [UIAlertAction] = [
                     UIAlertAction(title: "Tiếp tục", style: .default) { action in
-                        self.confirmRegister()
+                        self.confirmRegister(sender)
                     },
                     UIAlertAction(title: "Đóng", style: .cancel)
                 ]
@@ -63,28 +64,31 @@ class HomeController: UIViewController {
         }
     }
     
-    func confirmRegister() {
-        var actions: [UIAlertAction] = []
-        if defaults.string(forKey: Constant.USER_STATUS) == nil {
-            actions.append(UIAlertAction(title: "Xác nhận", style: .default) { action in
-                self.register()
-            })
-        } else {
+    func confirmRegister(_ sender: UIButton) {
+        // Mặc định không tìm thấy là false
+        if defaults.bool(forKey: Constant.USER_STATUS) {
+            var actions: [UIAlertAction] = []
             actions.append(UIAlertAction(title: "Tiếp tục", style: .default, handler: { action in
-                self.register()
+                self.register(sender)
             }))
             actions.append(UIAlertAction(title: "Bỏ qua", style: .cancel))
             ControllerUtils.alert(self, title: "Tiếp tục đăng ký Smart OTP", message: "Đã có tài khoản khác đăng ký Smart OTP trên thiết bị này, bạn có chắc chắn muốn tiếp tục không?", actions: actions)
+        } else {
+            // Nếu user status là false thì cho phép đăng ký
+            register(sender)
         }
     }
     
-    func register() {
+    func register(_ sender: UIButton) {
         ControllerUtils.showSpinner(onView: view, &spinner)
-        SmartOTPService.shared.verifyRegister() { data in
+        SmartOTPService.shared.register() { h in
             ControllerUtils.removeSpinner(self.spinner) {
                 self.spinner = nil
             }
-            self.updateRegisterButton()
+            self.h = h
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: SegueEnum.HOME_CONTROLLER_TO_REGISTER_SMS_OTP_CONTROLLER.rawValue, sender: sender)
+            }
         }
     }
     
@@ -109,6 +113,13 @@ class HomeController: UIViewController {
     
     @IBAction func transactionButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: SegueEnum.TO_TRASACTION_CONTROLLER.rawValue, sender: sender)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueEnum.HOME_CONTROLLER_TO_REGISTER_SMS_OTP_CONTROLLER.rawValue {
+            let destination = segue.destination as! RegisterSMSOTPController
+            destination.h = h
+        }
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

@@ -10,11 +10,12 @@ import UIKit
 
 struct VerifyRegistration {
     struct Request: Codable {
-        init(h: String, app_key: String) {
+        init(h: String, app_key: String, otp: String) {
             self.h = h
             self.app_key = app_key
+            self.otp = otp
         }
-        var otp: String = "1111"
+        var otp: String
         var h: String
         var app_key: String
         var device_name = UIDevice.current.name
