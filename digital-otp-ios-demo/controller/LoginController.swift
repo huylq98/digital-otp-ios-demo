@@ -20,17 +20,18 @@ class LoginController: UIViewController {
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        guard let msisdn = msisdn(msisdnTextField.text) else {
-            fatalError("Failed to login: msisdn not found.")
-        }
-        guard let pin = pinTextField.text else {
-            fatalError("Failed to login: pin not found.")
+        guard let msisdn = msisdn(msisdnTextField.text),
+              let pin = pinTextField.text else {
+            fatalError("Failed to login: invalid input.")
         }
         
-        guard let uuid = UIDevice.current.identifierForVendor?.uuidString else {
-            fatalError("Failed to generated IMEI.")
+        var imei = "VTP_" // prefix for Android to bypass server check
+        do {
+            imei = imei.appending(try keychain.getDeviceImei())
+        } catch {
+            fatalError(error.localizedDescription)
         }
-        let imei = "VTP_".appending(uuid)
+        print("IMEI = \(imei)")
         defaults.set(msisdn, forKey: Constant.MSISDN)
         defaults.set(imei, forKey: Constant.IMEI)
         
@@ -39,8 +40,9 @@ class LoginController: UIViewController {
             ControllerUtils.removeSpinner(self.spinner) {
                 self.spinner = nil
             }
+            
             DispatchQueue.main.async {
-                self.performSegue(withIdentifier: Constant.SEGUE_TO_HOME_CONTROLLER, sender: sender)
+                self.performSegue(withIdentifier: SegueEnum.TO_HOME_CONTROLLER.rawValue, sender: sender)
             }
         }
     }
@@ -50,10 +52,8 @@ class LoginController: UIViewController {
     }
     
     func msisdn(_ input: String?) -> String? {
-        guard var msisdn = input else {
-            fatalError("Failed to login: msisdn not found.")
-        }
-        guard let firstNumber = msisdn.first else {
+        guard var msisdn = input,
+              let firstNumber = msisdn.first else {
             fatalError("Failed to login: msisdn not found.")
         }
         if "0" == firstNumber {

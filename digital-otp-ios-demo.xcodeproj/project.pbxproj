@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1C38D244283D14FE0081B0C9 /* ControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D243283D14FE0081B0C9 /* ControllerUtils.swift */; };
-		1C38D246283DE45C0081B0C9 /* PreRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D245283DE45C0081B0C9 /* PreRegister.swift */; };
+		1C38D246283DE45C0081B0C9 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D245283DE45C0081B0C9 /* Registration.swift */; };
 		1C38D248283E26140081B0C9 /* TransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D247283E26140081B0C9 /* TransactionController.swift */; };
 		1C3C9DBA283F6CEA001F812F /* HMACAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DA9283F6CEA001F812F /* HMACAlgorithm.swift */; };
 		1C3C9DBB283F6CEA001F812F /* QuestionFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAA283F6CEA001F812F /* QuestionFormatter.swift */; };
@@ -37,7 +37,7 @@
 		1C3C9DEE2840706B001F812F /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DED2840706B001F812F /* AppUtils.swift */; };
 		1C3C9DF028407465001F812F /* Verify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DEF28407465001F812F /* Verify.swift */; };
 		1C8CFE5F283D081A0045F23B /* CDCNAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE5E283D081A0045F23B /* CDCNAuth.swift */; };
-		1C8CFE61283D0B250045F23B /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE60283D0B250045F23B /* Register.swift */; };
+		1C8CFE61283D0B250045F23B /* VerifyRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE60283D0B250045F23B /* VerifyRegistration.swift */; };
 		1C8CFE65283D11F80045F23B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE64283D11F80045F23B /* LoginController.swift */; };
 		1CA2453E28364C8F0013EF32 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2453D28364C8F0013EF32 /* GeneralResponse.swift */; };
 		1CACA6D42844E0020071EF6F /* SmartOTPTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CACA6D32844E0020071EF6F /* SmartOTPTest.swift */; };
@@ -45,6 +45,9 @@
 		1CB18C232848796F00F635AA /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB18C222848796F00F635AA /* NotificationService.swift */; };
 		1CB18C252848A26C00F635AA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB18C242848A26C00F635AA /* AuthService.swift */; };
 		1CB18C272848D70B00F635AA /* SmartOTPStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB18C262848D70B00F635AA /* SmartOTPStatus.swift */; };
+		1CB18C2B2849B51500F635AA /* ResponseStatusEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB18C2A2849B51500F635AA /* ResponseStatusEnum.swift */; };
+		1CB18C2E2849B69000F635AA /* SegueEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB18C2D2849B69000F635AA /* SegueEnum.swift */; };
+		1CB18C302849C57200F635AA /* SMSOTPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB18C2F2849C57200F635AA /* SMSOTPController.swift */; };
 		1CB571E8283627AE0016A911 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571E7283627AE0016A911 /* AppDelegate.swift */; };
 		1CB571EA283627AE0016A911 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571E9283627AE0016A911 /* SceneDelegate.swift */; };
 		1CB571EC283627AE0016A911 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB571EB283627AE0016A911 /* HomeController.swift */; };
@@ -82,7 +85,7 @@
 
 /* Begin PBXFileReference section */
 		1C38D243283D14FE0081B0C9 /* ControllerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerUtils.swift; sourceTree = "<group>"; };
-		1C38D245283DE45C0081B0C9 /* PreRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreRegister.swift; sourceTree = "<group>"; };
+		1C38D245283DE45C0081B0C9 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		1C38D247283E26140081B0C9 /* TransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionController.swift; sourceTree = "<group>"; };
 		1C3C9D0B283F6C45001F812F /* digital-otp-ios-demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "digital-otp-ios-demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		1C3C9DA9283F6CEA001F812F /* HMACAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMACAlgorithm.swift; sourceTree = "<group>"; };
@@ -112,7 +115,7 @@
 		1C3C9DED2840706B001F812F /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		1C3C9DEF28407465001F812F /* Verify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verify.swift; sourceTree = "<group>"; };
 		1C8CFE5E283D081A0045F23B /* CDCNAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCNAuth.swift; sourceTree = "<group>"; };
-		1C8CFE60283D0B250045F23B /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		1C8CFE60283D0B250045F23B /* VerifyRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyRegistration.swift; sourceTree = "<group>"; };
 		1C8CFE64283D11F80045F23B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1CA2453D28364C8F0013EF32 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
 		1CACA6D32844E0020071EF6F /* SmartOTPTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartOTPTest.swift; sourceTree = "<group>"; };
@@ -120,6 +123,9 @@
 		1CB18C222848796F00F635AA /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		1CB18C242848A26C00F635AA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		1CB18C262848D70B00F635AA /* SmartOTPStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartOTPStatus.swift; sourceTree = "<group>"; };
+		1CB18C2A2849B51500F635AA /* ResponseStatusEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseStatusEnum.swift; sourceTree = "<group>"; };
+		1CB18C2D2849B69000F635AA /* SegueEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueEnum.swift; sourceTree = "<group>"; };
+		1CB18C2F2849C57200F635AA /* SMSOTPController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSOTPController.swift; sourceTree = "<group>"; };
 		1CB571E4283627AE0016A911 /* digital-otp-ios-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "digital-otp-ios-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CB571E7283627AE0016A911 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CB571E9283627AE0016A911 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +233,7 @@
 				1CB571EB283627AE0016A911 /* HomeController.swift */,
 				1C38D247283E26140081B0C9 /* TransactionController.swift */,
 				1C3C9DE6283F8938001F812F /* OTPPopUpController.swift */,
+				1CB18C2F2849C57200F635AA /* SMSOTPController.swift */,
 				1C38D243283D14FE0081B0C9 /* ControllerUtils.swift */,
 			);
 			path = controller;
@@ -258,13 +265,23 @@
 				1CB57204283637640016A911 /* FAQ.swift */,
 				1CA2453D28364C8F0013EF32 /* GeneralResponse.swift */,
 				1C8CFE5E283D081A0045F23B /* CDCNAuth.swift */,
-				1C38D245283DE45C0081B0C9 /* PreRegister.swift */,
-				1C8CFE60283D0B250045F23B /* Register.swift */,
+				1C38D245283DE45C0081B0C9 /* Registration.swift */,
+				1C8CFE60283D0B250045F23B /* VerifyRegistration.swift */,
 				1C3C9DEB284069CF001F812F /* Sync.swift */,
 				1C3C9DEF28407465001F812F /* Verify.swift */,
 				1CB18C262848D70B00F635AA /* SmartOTPStatus.swift */,
 			);
 			path = dto;
+			sourceTree = "<group>";
+		};
+		1CB18C2C2849B67100F635AA /* constant */ = {
+			isa = PBXGroup;
+			children = (
+				1CB18C202848689500F635AA /* Constant.swift */,
+				1CB18C2A2849B51500F635AA /* ResponseStatusEnum.swift */,
+				1CB18C2D2849B69000F635AA /* SegueEnum.swift */,
+			);
+			path = constant;
 			sourceTree = "<group>";
 		};
 		1CB571DB283627AD0016A911 = {
@@ -292,6 +309,7 @@
 				1CC152DB28445B3B00B92420 /* config */,
 				1C3C9DE828406970001F812F /* controller */,
 				1C3C9DE92840697D001F812F /* service */,
+				1CB18C2C2849B67100F635AA /* constant */,
 				1C3C9DEA2840698C001F812F /* ocra */,
 				1C8CFE5D283D08070045F23B /* dto */,
 				1CC152DC28445B6500B92420 /* utils */,
@@ -301,7 +319,6 @@
 				1CB571F2283627AF0016A911 /* LaunchScreen.storyboard */,
 				1CB571F0283627AF0016A911 /* Assets.xcassets */,
 				1CB571F5283627AF0016A911 /* Info.plist */,
-				1CB18C202848689500F635AA /* Constant.swift */,
 			);
 			path = "digital-otp-ios-demo";
 			sourceTree = "<group>";
@@ -473,14 +490,16 @@
 				1CB57205283637640016A911 /* FAQ.swift in Sources */,
 				1C3C9DBE283F6CEA001F812F /* TimestampFormat.swift in Sources */,
 				1C3C9DBD283F6CEA001F812F /* CounterFormat.swift in Sources */,
-				1C38D246283DE45C0081B0C9 /* PreRegister.swift in Sources */,
+				1CB18C2B2849B51500F635AA /* ResponseStatusEnum.swift in Sources */,
+				1C38D246283DE45C0081B0C9 /* Registration.swift in Sources */,
 				1CB571E8283627AE0016A911 /* AppDelegate.swift in Sources */,
 				1C38D248283E26140081B0C9 /* TransactionController.swift in Sources */,
 				1C3C9DEE2840706B001F812F /* AppUtils.swift in Sources */,
-				1C8CFE61283D0B250045F23B /* Register.swift in Sources */,
+				1C8CFE61283D0B250045F23B /* VerifyRegistration.swift in Sources */,
 				1C3C9DC0283F6CEA001F812F /* PasswordAlgorithm.swift in Sources */,
 				1CB571FE283627D50016A911 /* SmartOTPService.swift in Sources */,
 				1C3C9DF028407465001F812F /* Verify.swift in Sources */,
+				1CB18C302849C57200F635AA /* SMSOTPController.swift in Sources */,
 				1C3C9DE7283F8938001F812F /* OTPPopUpController.swift in Sources */,
 				1C3C9DBF283F6CEA001F812F /* SessionInformation.swift in Sources */,
 				1CB18C272848D70B00F635AA /* SmartOTPStatus.swift in Sources */,
@@ -489,6 +508,7 @@
 				1C3C9DBC283F6CEA001F812F /* AlgorithmFactory.swift in Sources */,
 				1CB571EA283627AE0016A911 /* SceneDelegate.swift in Sources */,
 				1C8CFE65283D11F80045F23B /* LoginController.swift in Sources */,
+				1CB18C2E2849B69000F635AA /* SegueEnum.swift in Sources */,
 				1C3C9DBB283F6CEA001F812F /* QuestionFormatter.swift in Sources */,
 				1CB18C252848A26C00F635AA /* AuthService.swift in Sources */,
 				1C3C9DC1283F6CEA001F812F /* OCRAGenerator.swift in Sources */,

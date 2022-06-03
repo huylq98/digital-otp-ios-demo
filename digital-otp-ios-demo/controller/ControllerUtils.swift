@@ -35,4 +35,14 @@ struct ControllerUtils {
             completion()
         }
     }
+    
+    static func alert(_ vc: UIViewController, title: String, message: String, actions: [UIAlertAction]) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        actions.forEach { action in
+            alert.addAction(action)
+        }
+        DispatchQueue.main.async {
+            vc.present(alert, animated: true)
+        }
+    }
 }

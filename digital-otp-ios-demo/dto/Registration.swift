@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PreRegister {
+struct Registration {
     struct Request: Codable {
         
     }

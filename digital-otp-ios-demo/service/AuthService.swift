@@ -34,7 +34,7 @@ class AuthService {
                 print("========== LOGIN RESPONSE ==========")
                 print(response)
                 // Cần xác thực SMS OTP
-                if response?.status.code == Constant.NEED_VERIFY_OTP {
+                if response?.status.code == ResponseStatusEnum.NEED_VERIFY_OTP.rawValue {
                     print("Need verify OTP")
                     body.requestId = response?.data?.requestId
                     body.otp = "1111" // TODO: Hardcode for STAGING
@@ -46,13 +46,14 @@ class AuthService {
                         }
                         self.defaults.set(accessToken, forKey: Constant.ACCESS_TOKEN)
                         // sync
-                        SmartOTPService.shared.isRegisteredDigitalOTP(msisdn: msisdn, imei: imei) { isRegistered in
+                        SmartOTPService.shared.isRegisteredDigitalOTP() { isRegistered in
                             if isRegistered {
                                 SmartOTPService.shared.sync (isRegistered: isRegistered) { serverTime in
                                     self.defaults.set(serverTime - AppUtils.currentTime(), forKey: Constant.DELTA_TIME)
                                 }
                             }
                         }
+                        print("Access token = \(accessToken)")
                         completion(accessToken)
                     }
                 } else if response?.status.code == "00" {
@@ -61,13 +62,14 @@ class AuthService {
                     }
                     self.defaults.set(accessToken, forKey: Constant.ACCESS_TOKEN)
                     // sync
-                    SmartOTPService.shared.isRegisteredDigitalOTP(msisdn: msisdn, imei: imei) { isRegistered in
+                    SmartOTPService.shared.isRegisteredDigitalOTP() { isRegistered in
                         if isRegistered {
                             SmartOTPService.shared.sync (isRegistered: isRegistered) { serverTime in
                                 self.defaults.set(serverTime - AppUtils.currentTime(), forKey: Constant.DELTA_TIME)
                             }
                         }
                     }
+                    print("Access token = \(accessToken)")
                     completion(accessToken)
                 } else {
                     fatalError("Failed to login.")

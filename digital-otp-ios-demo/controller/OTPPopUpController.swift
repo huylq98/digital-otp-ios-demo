@@ -48,7 +48,7 @@ class OTPPopUpController: UIViewController {
                     let alert = UIAlertController(title: "Thành công!", message: "Bạn đã thực hiện chuyển tiền thành công.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Xác nhận", style: .default) { handler in
                         self.dismiss(animated: true)
-                        self.performSegue(withIdentifier: "backToTransactionController", sender: sender)
+                        self.performSegue(withIdentifier: SegueEnum.BACK_TO_TRANSACTION_CONTROLLER.rawValue, sender: sender)
                     })
                     self.present(alert, animated: true)
                 }
@@ -57,7 +57,7 @@ class OTPPopUpController: UIViewController {
                     let alert = UIAlertController(title: "Thất bại!", message: "Đã có lỗi xảy ra. Vui lòng thực hiện lại.", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Xác nhận", style: .default) { handler in
                         self.dismiss(animated: true)
-                        self.performSegue(withIdentifier: "backToTransactionController", sender: sender)
+                        self.performSegue(withIdentifier: SegueEnum.BACK_TO_TRANSACTION_CONTROLLER.rawValue, sender: sender)
                     })
                     self.present(alert, animated: true)
                 }

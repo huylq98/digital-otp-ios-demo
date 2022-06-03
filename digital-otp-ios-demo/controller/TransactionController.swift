@@ -35,16 +35,16 @@ class TransactionController: UIViewController {
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: Constant.SEQUE_BACK_TO_HOME_CONTROLLER, sender: sender)
+        performSegue(withIdentifier: SegueEnum.BACK_TO_HOME_CONTROLLER.rawValue, sender: sender)
     }
     
     private func checkRegisterDiginalOTP(msisdn: String, imei: String, _ sender: UIButton) {
-        SmartOTPService.shared.isRegisteredDigitalOTP(msisdn: msisdn, imei: imei) { isRegistered in
+        SmartOTPService.shared.isRegisteredDigitalOTP() { isRegistered in
             if !isRegistered {
                 print("Transaction confirmation: device has not registered Smart OTP.")
                 let alert = UIAlertController(title: "Thiết bị chưa đăng ký Smart OTP", message: "", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Đăng ký Smart OTP", style: .default) { handler in
-                    self.performSegue(withIdentifier: "backToRegisterController", sender: sender)
+                    self.performSegue(withIdentifier: SegueEnum.BACK_TO_HOME_CONTROLLER.rawValue, sender: sender)
                 })
                 alert.addAction(UIAlertAction(title: "Đóng", style: .cancel))
                 DispatchQueue.main.async {
@@ -52,7 +52,7 @@ class TransactionController: UIViewController {
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "toPopUpController", sender: sender)
+                    self.performSegue(withIdentifier: SegueEnum.TO_POP_UP_CONTROLLER.rawValue, sender: sender)
                 }
             }
         }

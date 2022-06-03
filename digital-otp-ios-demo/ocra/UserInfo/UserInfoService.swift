@@ -90,10 +90,7 @@ class UserInfoService: UserInfoServiceAPI {
     func generateKeyPair(saveId msisdn: String) -> [UInt8]? {
         let domain = Domain.instance(curve: .EC256r1)
         let (publicKey, privateKey): (ECPublicKey, ECPrivateKey) = domain.makeKeyPair()
-        var userData: UserInfo
-        guard let userData = try? keychain.readData(by: msisdn) else {
-            fatalError("User's data not found: \(msisdn)")
-        }
+        let userData = UserInfo(userId: msisdn)
         userData.publicKey = publicKey.der.hexaAsString
         userData.privateKey = privateKey.derPkcs8.hexaAsString
         guard (try? keychain.saveData(of: userData)) != nil else { return nil }

@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
-struct Register {
+struct VerifyRegistration {
     struct Request: Codable {
         init(h: String, app_key: String) {
             self.h = h
@@ -16,7 +17,7 @@ struct Register {
         var otp: String = "1111"
         var h: String
         var app_key: String
-        var device_name: String = "android"
+        var device_name = UIDevice.current.name
     }
     
     struct Response: Codable {

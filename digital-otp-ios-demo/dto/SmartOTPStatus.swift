@@ -13,7 +13,7 @@ struct SmartOTPStatus {
     }
     
     struct Response: Codable {
-        var is_registered: Bool
-        var device_name: String
+        var is_registered: Bool?
+        var device_name: String?
     }
 }

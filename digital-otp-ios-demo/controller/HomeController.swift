@@ -18,51 +18,79 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let msisdn = defaults.string(forKey: Constant.MSISDN) else {
-            fatalError("Failed to read msisdn.")
-        }
-        guard let imei = defaults.string(forKey: Constant.IMEI) else {
-            fatalError("Failed to read imei.")
-        }
+        // TODO: Kiểm tra lại logic huỷ đăng ký Smart OTP khi xoá app cài lại
         if defaults.string(forKey: Constant.USER_STATUS) == nil {
-            SmartOTPService.shared.isRegisteredDigitalOTP(msisdn: msisdn, imei: imei) { isRegistered in
-                print("is registerd smart otp = \(isRegistered)")
+            SmartOTPService.shared.isRegisteredDigitalOTP() { isRegistered in
                 if isRegistered {
-                    SmartOTPService.shared.deregister(imei: imei, completion: { isSuccess in
+                    SmartOTPService.shared.deregister() { isSuccess in
                         if isSuccess {
-                            AppUtils.pushNotification(notificationID: "deregisterNoti", title: "Smart OTP đã bị huỷ.", content: "Smart OTP trên thiết bị này đã bị huỷ do bạn xoá app. Vui lòng đăng ký lại để sử dụng dịch vụ.", view: self)
+                            AppUtils.pushNotification(notificationID: "deregisterNotification", title: "Smart OTP đã bị huỷ.", content: "Smart OTP trên thiết bị này đã bị huỷ do bạn xoá app. Vui lòng đăng ký lại để sử dụng dịch vụ.", view: self)
                             DispatchQueue.main.async {
                                 self.updateRegisterButton()
                             }
                         }
-                    })
+                    }
                 }
             }
         }
-        
         updateRegisterButton()
     }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
-        checkChangedDevice { isAllowedToRegister in
-            if isAllowedToRegister {
-                ControllerUtils.showSpinner(onView: self.view, &self.spinner)
-                SmartOTPService.shared.register() { data in
-                    ControllerUtils.removeSpinner(self.spinner) {
-                        self.spinner = nil
+        SmartOTPService.shared.preRegister { data in
+            let statusCode = ResponseStatusEnum(rawValue: data.status.code)
+            switch statusCode {
+            case .SUCCESS:
+                self.confirmRegister()
+            case .REGISTERED_ON_ANOTHER_DEVICE:
+                let actions: [UIAlertAction] = [
+                    UIAlertAction(title: "Tiếp tục", style: .default) { action in
+                        self.confirmRegister()
+                    },
+                    UIAlertAction(title: "Đóng", style: .cancel)
+                ]
+                ControllerUtils.alert(self, title: "Xác nhận đăng ký Smart OTP", message: data.status.message, actions: actions)
+            case .ALREADY_REGISTERED:
+                let actions: [UIAlertAction] = [
+                    UIAlertAction(title: "Xác nhận", style: .default) { action in
+                        self.updateRegisterButton()
                     }
-                    self.updateRegisterButton()
-                }
+                ]
+                ControllerUtils.alert(self, title: "Đã đăng ký Smart OTP", message: "Đã đăng ký Smart OTP", actions: actions)
+            default:
+                fatalError("Invalid status code: \(statusCode?.rawValue)")
             }
+        }
+    }
+    
+    func confirmRegister() {
+        var actions: [UIAlertAction] = []
+        if defaults.string(forKey: Constant.USER_STATUS) == nil {
+            actions.append(UIAlertAction(title: "Xác nhận", style: .default) { action in
+                self.register()
+            })
+        } else {
+            actions.append(UIAlertAction(title: "Tiếp tục", style: .default, handler: { action in
+                self.register()
+            }))
+            actions.append(UIAlertAction(title: "Bỏ qua", style: .cancel))
+            ControllerUtils.alert(self, title: "Tiếp tục đăng ký Smart OTP", message: "Đã có tài khoản khác đăng ký Smart OTP trên thiết bị này, bạn có chắc chắn muốn tiếp tục không?", actions: actions)
+        }
+    }
+    
+    func register() {
+        ControllerUtils.showSpinner(onView: view, &spinner)
+        SmartOTPService.shared.verifyRegister() { data in
+            ControllerUtils.removeSpinner(self.spinner) {
+                self.spinner = nil
+            }
+            self.updateRegisterButton()
         }
     }
     
     @IBAction func deregisterButtonPressed(_ sender: UIButton) {
         ControllerUtils.showSpinner(onView: view, &spinner)
-        guard let imei = defaults.string(forKey: Constant.IMEI) else {
-            fatalError("Failed to read imei.")
-        }
-        SmartOTPService.shared.deregister(imei: imei) { isDeregistered in
+        SmartOTPService.shared.deregister() { isDeregistered in
             if isDeregistered {
                 ControllerUtils.removeSpinner(self.spinner) {
                     self.spinner = nil
@@ -80,7 +108,7 @@ class HomeController: UIViewController {
     }
     
     @IBAction func transactionButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "toTransactionController", sender: sender)
+        performSegue(withIdentifier: SegueEnum.TO_TRASACTION_CONTROLLER.rawValue, sender: sender)
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -88,13 +116,7 @@ class HomeController: UIViewController {
     }
     
     private func updateRegisterButton() {
-        guard let msisdn = defaults.string(forKey: Constant.MSISDN) else {
-            fatalError("Failed to register: msisdn not found.")
-        }
-        guard let imei = defaults.string(forKey: Constant.IMEI) else {
-            fatalError("Failed to register: imei not found.")
-        }
-        SmartOTPService.shared.isRegisteredDigitalOTP(msisdn: msisdn, imei: imei) { isRegistered in
+        SmartOTPService.shared.isRegisteredDigitalOTP() { isRegistered in
             if isRegistered {
                 print("Digital OTP Registered.")
                 DispatchQueue.main.async {
@@ -111,43 +133,5 @@ class HomeController: UIViewController {
                 }
             }
         }
-    }
-    
-    func checkChangedDevice(completion: @escaping (Bool) -> ()) {
-        guard let msisdn = defaults.string(forKey: Constant.MSISDN) else {
-            fatalError("Failed to load msisdn.")
-        }
-        guard let imei = defaults.string(forKey: Constant.IMEI) else {
-            fatalError("Failed to load imei.")
-        }
-        // Kiểm tra số điện thoại đã được đăng ký Smart OTP trên thiết bị này chưa
-        SmartOTPService.shared.isRegisteredDigitalOTP(msisdn: msisdn, imei: imei) { isRegistered in
-            if !isRegistered {
-                // Kiểm tra xem số điện thoại này có được đăng ký Smart OTP trên thiết bị khác không
-                SmartOTPService.shared.smartOTPStatus(msisdn: msisdn) { status in
-                    guard let isRegistered = status.data?.is_registered else {
-                        fatalError("Failed to check \(msisdn) Smart OTP Status.")
-                    }
-                    if isRegistered {
-                        let alert = UIAlertController(title: "Xác nhận đăng ký Smart OTP", message: "Smart OTP đã được đăng ký trên thiết bị \(status.data?.device_name ?? "khác"). Bạn có muốn tiếp tục đăng ký trên thiết bị này không?", preferredStyle: .alert)
-                        // Quyết định ghi đè
-                        alert.addAction(UIAlertAction(title: "Tiếp tục", style: .default, handler: { action in
-                            completion(true)
-                        }))
-                        alert.addAction(UIAlertAction(title: "Bỏ qua", style: .cancel, handler: { action in
-                            completion(false)
-                        }))
-                        DispatchQueue.main.async {
-                            self.present(alert, animated: true)
-                        }
-                    } else {
-                        // Nếu chưa đăng ký trên thiết bị khác thì cho phép đăng ký
-                        completion(true)
-                    }
-                }
-            }
-        }
-        // Số điện thoại đăng ký Smart OTP đăng ký rồi thì thôi
-        completion(false)
     }
 }
