@@ -8,10 +8,9 @@
 import UIKit
 
 class RegisterSMSOTPController: UIViewController {
-    
-    @IBOutlet weak var informationLabel: UILabel!
-    @IBOutlet weak var smsOtpText: UITextField!
-    @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet var informationLabel: UILabel!
+    @IBOutlet var otpTextField: UITextField!
+    @IBOutlet var countdownLabel: UILabel!
     
     var h: String?
     let defaults = UserDefaults.standard
@@ -20,9 +19,16 @@ class RegisterSMSOTPController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        informationLabel.text =  "Vui lòng nhập mã OTP được gửi về SĐT \(defaults.string(forKey: Constant.MSISDN) ?? "") để xác nhận đăng ký Smart OTP"
+        informationLabel.text = "Vui lòng nhập mã OTP được gửi về SĐT \(defaults.string(forKey: Constant.MSISDN) ?? "") để xác nhận đăng ký Smart OTP"
         
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: (#selector(RegisterSMSOTPController.countdown)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(RegisterSMSOTPController.countdown), userInfo: nil, repeats: true)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap() {
+        // handling code
+        view.endEditing(true)
     }
     
     @objc func countdown() {
@@ -37,7 +43,8 @@ class RegisterSMSOTPController: UIViewController {
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
         guard let h = h,
-              let otp = smsOtpText.text else {
+              let otp = otpTextField.text
+        else {
             fatalError("Invalid input")
         }
         SmartOTPService.shared.verifyRegister(h: h, otp: otp) { response in
@@ -49,7 +56,7 @@ class RegisterSMSOTPController: UIViewController {
                 }
             case .WRONG_SMS_OTP, .BLOCKED_ACCOUNT, .INVALID_SMS_OTP:
                 var actions: [UIAlertAction] = []
-                actions.append(UIAlertAction(title: "Xác nhận", style: .default) { action in
+                actions.append(UIAlertAction(title: "Xác nhận", style: .default) { _ in
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: SegueEnum.REGISTER_SMS_OTP_CONTROLLER_TO_HOME_CONTROLLER.rawValue, sender: sender)
                     }

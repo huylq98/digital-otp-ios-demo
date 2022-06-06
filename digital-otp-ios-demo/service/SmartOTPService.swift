@@ -21,7 +21,8 @@ struct SmartOTPService {
         if let url = URL(string: baseURL.appending("/digital-otp/public/v1/users/request")) {
             var request = URLRequest(url: url)
             guard let accessToken = defaults.string(forKey: Constant.ACCESS_TOKEN),
-                  let imei = defaults.string(forKey: Constant.IMEI) else {
+                  let imei = defaults.string(forKey: Constant.IMEI)
+            else {
                 fatalError("Failed to pre-register.")
             }
             request.addValue(accessToken, forHTTPHeaderField: "Authorization")
@@ -42,7 +43,8 @@ struct SmartOTPService {
     func register(completion: @escaping (String?) -> ()) {
         guard let accessToken = defaults.string(forKey: Constant.ACCESS_TOKEN),
               let imei = defaults.string(forKey: Constant.IMEI),
-              let url = URL(string: baseURL.appending("/digital-otp/public/v1/users/register")) else {
+              let url = URL(string: baseURL.appending("/digital-otp/public/v1/users/register"))
+        else {
             fatalError("Failed to register.")
         }
         var request = URLRequest(url: url)
@@ -62,7 +64,8 @@ struct SmartOTPService {
               let imei = defaults.string(forKey: Constant.IMEI),
               let msisdn = defaults.string(forKey: Constant.MSISDN),
               let appPublicKey = UserInfoService.shared.generatePublicECKey(msisdn: msisdn, force: false),
-              let url = URL(string: baseURL.appending("/digital-otp/public/v1/users/register")) else {
+              let url = URL(string: baseURL.appending("/digital-otp/public/v1/users/register"))
+        else {
             fatalError("Failed to register.")
         }
         
@@ -75,7 +78,7 @@ struct SmartOTPService {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // HTTP Body
-        let body = VerifyRegistration.Request(h: h, app_key: appPublicKey.hexaAsString, otp: otp)
+        let body = VerifyRegistration.Request(h: h, appKey: appPublicKey.hexaAsString, otp: otp)
         print("Register request body: \(body)")
         request.httpBody = AppUtils.encode(object: body)
         AppUtils.doRequest(request: request) { data in
@@ -88,7 +91,7 @@ struct SmartOTPService {
             let responseStatus = ResponseStatusEnum(rawValue: response.status.code)
             switch responseStatus {
             case .SUCCESS:
-                guard let serverPublicKey = response.data?.server_key else {
+                guard let serverPublicKey = response.data?.serverKey else {
                     fatalError("register(): Invalid response \(String(describing: response)).")
                 }
                 UserInfoService.shared.saveKeys(msisdn: msisdn, serverPublicKey: serverPublicKey, syncTime: AppUtils.currentTime())
@@ -103,7 +106,8 @@ struct SmartOTPService {
     func isRegisteredDigitalOTP(completion: @escaping (Bool) -> ()) {
         guard let msisdn = defaults.string(forKey: Constant.MSISDN),
               let imei = defaults.string(forKey: Constant.IMEI),
-              let url = URL(string: baseURL.appending("/digital-otp/private/v1/users/request?msisdn=\(msisdn)&deviceId=\(imei)")) else {
+              let url = URL(string: baseURL.appending("/digital-otp/private/v1/users/request?msisdn=\(msisdn)&deviceId=\(imei)"))
+        else {
             fatalError("isRegisteredDigitalOTP: Invalid input.")
         }
         let request = URLRequest(url: url)
@@ -120,7 +124,8 @@ struct SmartOTPService {
         guard let accessToken = defaults.string(forKey: Constant.ACCESS_TOKEN),
               let imei = defaults.string(forKey: Constant.IMEI),
               let msisdn = defaults.string(forKey: Constant.MSISDN),
-              let url = URL(string: baseURL.appending("/digital-otp/public/v1/users/cancel")) else {
+              let url = URL(string: baseURL.appending("/digital-otp/public/v1/users/cancel"))
+        else {
             fatalError("Failed to deregister.")
         }
         var request = URLRequest(url: url)
@@ -153,7 +158,8 @@ struct SmartOTPService {
         guard let imei = defaults.string(forKey: Constant.IMEI),
               let msisdn = defaults.string(forKey: Constant.MSISDN),
               let otp = otp,
-              let url = URL(string: baseURL.appending("/digital-otp/private/v1/users/verify")) else {
+              let url = URL(string: baseURL.appending("/digital-otp/private/v1/users/verify"))
+        else {
             fatalError("Failed to verify.")
         }
         var request = URLRequest(url: url)
@@ -163,7 +169,7 @@ struct SmartOTPService {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // HTTP Body
-        let body = Verify.Request(otp: otp, trans_id: transId ?? "", device_id: imei, msisdn: msisdn)
+        let body = Verify.Request(otp: otp, transId: transId ?? "", deviceId: imei, msisdn: msisdn)
         request.httpBody = AppUtils.encode(object: body)
         
         AppUtils.doRequest(request: request) { data in
@@ -180,7 +186,8 @@ struct SmartOTPService {
         }
         guard let accessToken = defaults.string(forKey: Constant.ACCESS_TOKEN),
               let imei = defaults.string(forKey: Constant.IMEI),
-              let url = URL(string: baseURL.appending("/digital-otp/public/v1/users/sync")) else {
+              let url = URL(string: baseURL.appending("/digital-otp/public/v1/users/sync"))
+        else {
             fatalError("Failed to sync.")
         }
         var request = URLRequest(url: url)
@@ -192,11 +199,11 @@ struct SmartOTPService {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // HTTP Body
-        let body = Sync.Request(is_registered: isRegistered)
+        let body = Sync.Request(isRegistered: isRegistered)
         request.httpBody = AppUtils.encode(object: body)
         AppUtils.doRequest(request: request) { data in
             let response = AppUtils.decode(json: data, as: GeneralResponse<Sync.Response>.self)
-            guard let serverTime = response?.data?.server_time else {
+            guard let serverTime = response?.data?.serverTime else {
                 fatalError("Failed to get server time.")
             }
             completion(serverTime)
@@ -226,6 +233,5 @@ struct SmartOTPService {
                 completion(response)
             }
         }
-        
     }
 }

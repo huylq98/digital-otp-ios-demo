@@ -52,7 +52,7 @@ class UserInfoService: UserInfoServiceAPI {
         guard let sharedKey = sharedKey else { return nil }
 
         print("sharedKey = \(sharedKey)")
-        let timeStamp = AppUtils.currentTime() + user.syncTime
+        let timeStamp = AppUtils.currentTime() // TODO: + user.syncTime
         print("timeStamp = \(timeStamp)")
         
         // 3308980042285

@@ -7,13 +7,16 @@
 
 import Foundation
 
-struct SmartOTPStatus {
-    struct Request: Codable {
-        
-    }
-    
+enum SmartOTPStatus {
+    struct Request: Codable {}
+
     struct Response: Codable {
-        var is_registered: Bool?
-        var device_name: String?
+        var isRegistered: Bool?
+        var deviceName: String?
+
+        enum CodingKeys: String, CodingKey {
+            case isRegistered = "is_registered"
+            case deviceName = "device_name"
+        }
     }
 }

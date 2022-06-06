@@ -8,11 +8,10 @@
 import UIKit
 
 class LoginSMSOTPController: UIViewController {
-    
-    @IBOutlet weak var smsOtpText: UITextField!
-    @IBOutlet weak var countdownLabel: UILabel!
-    @IBOutlet weak var confirmButton: UIButton!
-    @IBOutlet weak var informationText: UILabel!
+    @IBOutlet var smsOtpText: UITextField!
+    @IBOutlet var countdownLabel: UILabel!
+    @IBOutlet var confirmButton: UIButton!
+    @IBOutlet var informationText: UILabel!
     
     var timer = Timer()
     var totalTime = 60
@@ -22,7 +21,14 @@ class LoginSMSOTPController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         informationText.text = "Vui lòng nhập mã OTP được gửi về SĐT \(defaults.string(forKey: Constant.MSISDN ?? "")) để đăng nhập"
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: (#selector(LoginSMSOTPController.countdown)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(LoginSMSOTPController.countdown), userInfo: nil, repeats: true)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap() {
+        // handling code
+        view.endEditing(true)
     }
     
     @objc func countdown() {
@@ -40,7 +46,8 @@ class LoginSMSOTPController: UIViewController {
               let requestId = requestId,
               let msisdn = defaults.string(forKey: Constant.MSISDN),
               let pin = defaults.string(forKey: Constant.PIN),
-              let imei = defaults.string(forKey: Constant.IMEI) else {
+              let imei = defaults.string(forKey: Constant.IMEI)
+        else {
             fatalError("Invalid input.")
         }
         AuthService.shared.cdcnAuthLogin(msisdn, pin, imei, requestId, otp) { response in

@@ -7,10 +7,9 @@
 
 import Foundation
 
-struct Registration {
-    struct Request: Codable {
-        
-    }
+enum Registration {
+    struct Request: Codable {}
+
     struct Response: Codable {
         var signedRequest: String?
     }

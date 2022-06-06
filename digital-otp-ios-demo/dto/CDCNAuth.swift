@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CDCNAuth {
+enum CDCNAuth {
     struct Request: Codable {
         init(msisdn: String, pin: String, imei: String) {
             self.msisdn = msisdn
@@ -16,6 +16,7 @@ struct CDCNAuth {
             self.notifyToken = msisdn
             self.imei = imei
         }
+
         var msisdn: String
         var username: String
         var pin: String
@@ -27,7 +28,7 @@ struct CDCNAuth {
         var requestId: String?
         var otp: String?
     }
-    
+
     struct Response: Codable {
         var accessToken: String?
         var refreshToken: String?
@@ -48,7 +49,7 @@ struct CDCNAuth {
         var isByPass: Bool?
         var smartOtpInfo: SmartOTPInfo?
     }
-    
+
     struct SmartOTPInfo: Codable {
         var mobileDeviceId: String?
         var registerStatus: String?

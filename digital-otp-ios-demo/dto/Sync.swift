@@ -7,14 +7,24 @@
 
 import Foundation
 
-struct Sync {
+enum Sync {
     struct Request: Codable {
-        var is_registered: Bool
+        var isRegistered: Bool
+
+        enum CodingKeys: String, CodingKey {
+            case isRegistered = "is_registered"
+        }
     }
-    
+
     struct Response: Codable {
-        var is_valid_show: Bool
-        var is_registered: Bool
-        var server_time: Int
+        var isValidShow: Bool
+        var isRegistered: Bool
+        var serverTime: Int
+
+        enum CodingKeys: String, CodingKey {
+            case isValidShow = "is_valid_show"
+            case isRegistered = "is_registered"
+            case serverTime = "server_time"
+        }
     }
 }

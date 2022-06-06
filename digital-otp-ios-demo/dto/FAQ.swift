@@ -7,10 +7,9 @@
 
 import Foundation
 
-struct FAQ: Codable {
-    struct Request: Codable {
-        
-    }
+enum FAQ {
+    struct Request: Codable {}
+
     struct Response: Codable {
         let id: Int
         let question: String

@@ -18,6 +18,13 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap() {
+        // handling code
+        view.endEditing(true)
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {

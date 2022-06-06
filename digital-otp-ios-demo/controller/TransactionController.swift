@@ -8,14 +8,20 @@
 import UIKit
 
 class TransactionController: UIViewController {
-    
-    @IBOutlet weak var receivedPhoneNumber: UITextField!
-    @IBOutlet weak var amount: UITextField!
+    @IBOutlet var receivedPhoneNumber: UITextField!
+    @IBOutlet var amount: UITextField!
     
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap() {
+        // handling code
+        view.endEditing(true)
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
@@ -39,11 +45,11 @@ class TransactionController: UIViewController {
     }
     
     private func checkRegisterDiginalOTP(msisdn: String, imei: String, _ sender: UIButton) {
-        SmartOTPService.shared.isRegisteredDigitalOTP() { isRegistered in
+        SmartOTPService.shared.isRegisteredDigitalOTP { isRegistered in
             if !isRegistered {
                 print("Transaction confirmation: device has not registered Smart OTP.")
                 let alert = UIAlertController(title: "Thiết bị chưa đăng ký Smart OTP", message: "", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Đăng ký Smart OTP", style: .default) { handler in
+                alert.addAction(UIAlertAction(title: "Đăng ký Smart OTP", style: .default) { _ in
                     self.performSegue(withIdentifier: SegueEnum.BACK_TO_HOME_CONTROLLER.rawValue, sender: sender)
                 })
                 alert.addAction(UIAlertAction(title: "Đóng", style: .cancel))

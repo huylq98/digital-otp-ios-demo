@@ -8,9 +8,8 @@
 import UIKit
 
 class HomeController: UIViewController {
-    
-    @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var deregisterButton: UIButton!
+    @IBOutlet var registerButton: UIButton!
+    @IBOutlet var deregisterButton: UIButton!
     var spinner: UIView?
     
     let keychain = KeychainItem()
@@ -21,9 +20,9 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         // TODO: Kiểm tra lại logic huỷ đăng ký Smart OTP khi xoá app cài lại
         if defaults.string(forKey: Constant.USER_STATUS) == nil {
-            SmartOTPService.shared.isRegisteredDigitalOTP() { isRegistered in
+            SmartOTPService.shared.isRegisteredDigitalOTP { isRegistered in
                 if isRegistered {
-                    SmartOTPService.shared.deregister() { isSuccess in
+                    SmartOTPService.shared.deregister { isSuccess in
                         if isSuccess {
                             AppUtils.pushNotification(notificationID: "deregisterNotification", title: "Smart OTP đã bị huỷ.", content: "Smart OTP trên thiết bị này đã bị huỷ do bạn xoá app. Vui lòng đăng ký lại để sử dụng dịch vụ.", view: self)
                             DispatchQueue.main.async {
@@ -38,6 +37,7 @@ class HomeController: UIViewController {
     }
     
     @IBAction func registerButtonPressed(_ sender: UIButton) {
+        ControllerUtils.showSpinner(onView: view, &spinner)
         SmartOTPService.shared.preRegister { data in
             let statusCode = ResponseStatusEnum(rawValue: data.status.code)
             switch statusCode {
@@ -45,7 +45,7 @@ class HomeController: UIViewController {
                 self.confirmRegister(sender)
             case .REGISTERED_ON_ANOTHER_DEVICE:
                 let actions: [UIAlertAction] = [
-                    UIAlertAction(title: "Tiếp tục", style: .default) { action in
+                    UIAlertAction(title: "Tiếp tục", style: .default) { _ in
                         self.confirmRegister(sender)
                     },
                     UIAlertAction(title: "Đóng", style: .cancel)
@@ -53,13 +53,16 @@ class HomeController: UIViewController {
                 ControllerUtils.alert(self, title: "Xác nhận đăng ký Smart OTP", message: data.status.message, actions: actions)
             case .ALREADY_REGISTERED:
                 let actions: [UIAlertAction] = [
-                    UIAlertAction(title: "Xác nhận", style: .default) { action in
+                    UIAlertAction(title: "Xác nhận", style: .default) { _ in
                         self.updateRegisterButton()
                     }
                 ]
                 ControllerUtils.alert(self, title: "Đã đăng ký Smart OTP", message: "Đã đăng ký Smart OTP", actions: actions)
             default:
                 fatalError("Invalid status code: \(statusCode?.rawValue)")
+            }
+            ControllerUtils.removeSpinner(self.spinner) {
+                self.spinner = nil
             }
         }
     }
@@ -68,7 +71,7 @@ class HomeController: UIViewController {
         // Mặc định không tìm thấy là false
         if defaults.bool(forKey: Constant.USER_STATUS) {
             var actions: [UIAlertAction] = []
-            actions.append(UIAlertAction(title: "Tiếp tục", style: .default, handler: { action in
+            actions.append(UIAlertAction(title: "Tiếp tục", style: .default, handler: { _ in
                 self.register(sender)
             }))
             actions.append(UIAlertAction(title: "Bỏ qua", style: .cancel))
@@ -81,7 +84,7 @@ class HomeController: UIViewController {
     
     func register(_ sender: UIButton) {
         ControllerUtils.showSpinner(onView: view, &spinner)
-        SmartOTPService.shared.register() { h in
+        SmartOTPService.shared.register { h in
             ControllerUtils.removeSpinner(self.spinner) {
                 self.spinner = nil
             }
@@ -94,7 +97,7 @@ class HomeController: UIViewController {
     
     @IBAction func deregisterButtonPressed(_ sender: UIButton) {
         ControllerUtils.showSpinner(onView: view, &spinner)
-        SmartOTPService.shared.deregister() { isDeregistered in
+        SmartOTPService.shared.deregister { isDeregistered in
             if isDeregistered {
                 ControllerUtils.removeSpinner(self.spinner) {
                     self.spinner = nil
@@ -106,7 +109,7 @@ class HomeController: UIViewController {
     
     @IBAction func faqButtonPressed(_ sender: UIButton) {
         print("========== FAQ ==========")
-        SmartOTPService.shared.faq() { faq in
+        SmartOTPService.shared.faq { faq in
             print(faq)
         }
     }
@@ -127,8 +130,7 @@ class HomeController: UIViewController {
     }
     
     private func updateRegisterButton() {
-        ControllerUtils.showSpinner(onView: view, &spinner)
-        SmartOTPService.shared.isRegisteredDigitalOTP() { isRegistered in
+        SmartOTPService.shared.isRegisteredDigitalOTP { isRegistered in
             if isRegistered {
                 print("Digital OTP Registered.")
                 DispatchQueue.main.async {
@@ -143,9 +145,6 @@ class HomeController: UIViewController {
                     self.registerButton.isEnabled = true
                     self.deregisterButton.isEnabled = false
                 }
-            }
-            ControllerUtils.removeSpinner(self.spinner) {
-                self.spinner = nil
             }
         }
     }

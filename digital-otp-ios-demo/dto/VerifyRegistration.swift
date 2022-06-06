@@ -10,19 +10,31 @@ import UIKit
 
 struct VerifyRegistration {
     struct Request: Codable {
-        init(h: String, app_key: String, otp: String) {
+        init(h: String, appKey: String, otp: String) {
             self.h = h
-            self.app_key = app_key
+            self.appKey = appKey
             self.otp = otp
         }
+
         var otp: String
         var h: String
-        var app_key: String
-        var device_name = UIDevice.current.name
+        var appKey: String
+        var deviceName = UIDevice.current.name
+
+        enum CodingKeys: String, CodingKey {
+            case otp, h
+            case appKey = "app_key"
+            case deviceName = "device_name"
+        }
     }
-    
+
     struct Response: Codable {
-        var server_key: String
-        var server_time: Int
+        var serverKey: String
+        var serverTime: Int
+
+        enum CodingKeys: String, CodingKey {
+            case serverKey = "server_key"
+            case serverTime = "server_time"
+        }
     }
 }
