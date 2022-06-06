@@ -11,21 +11,7 @@
 		1C38D244283D14FE0081B0C9 /* ControllerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D243283D14FE0081B0C9 /* ControllerUtils.swift */; };
 		1C38D246283DE45C0081B0C9 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D245283DE45C0081B0C9 /* Registration.swift */; };
 		1C38D248283E26140081B0C9 /* TransactionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C38D247283E26140081B0C9 /* TransactionController.swift */; };
-		1C3C9DBA283F6CEA001F812F /* HMACAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DA9283F6CEA001F812F /* HMACAlgorithm.swift */; };
-		1C3C9DBB283F6CEA001F812F /* QuestionFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAA283F6CEA001F812F /* QuestionFormatter.swift */; };
-		1C3C9DBC283F6CEA001F812F /* AlgorithmFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAB283F6CEA001F812F /* AlgorithmFactory.swift */; };
-		1C3C9DBD283F6CEA001F812F /* CounterFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAC283F6CEA001F812F /* CounterFormat.swift */; };
-		1C3C9DBE283F6CEA001F812F /* TimestampFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAD283F6CEA001F812F /* TimestampFormat.swift */; };
-		1C3C9DBF283F6CEA001F812F /* SessionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAE283F6CEA001F812F /* SessionInformation.swift */; };
-		1C3C9DC0283F6CEA001F812F /* PasswordAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DAF283F6CEA001F812F /* PasswordAlgorithm.swift */; };
-		1C3C9DC1283F6CEA001F812F /* OCRAGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB0283F6CEA001F812F /* OCRAGenerator.swift */; };
-		1C3C9DC2283F6CEA001F812F /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB2283F6CEA001F812F /* DataExtension.swift */; };
-		1C3C9DC3283F6CEA001F812F /* StringExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB3283F6CEA001F812F /* StringExtenstion.swift */; };
-		1C3C9DC4283F6CEA001F812F /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB5283F6CEA001F812F /* UserInfo.swift */; };
-		1C3C9DC5283F6CEA001F812F /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB6283F6CEA001F812F /* UserInfoService.swift */; };
-		1C3C9DC6283F6CEA001F812F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB7283F6CEA001F812F /* Utils.swift */; };
 		1C3C9DC7283F6CEA001F812F /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DB9283F6CEA001F812F /* KeychainItem.swift */; };
-		1C3C9DD7283F6D53001F812F /* SwiftECC in Frameworks */ = {isa = PBXBuildFile; productRef = 1C3C9DD6283F6D53001F812F /* SwiftECC */; };
 		1C3C9DDF283F6D7F001F812F /* OCRASwiftTest5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DD8283F6D7E001F812F /* OCRASwiftTest5.swift */; };
 		1C3C9DE0283F6D7F001F812F /* ECCKeyPairTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DD9283F6D7E001F812F /* ECCKeyPairTest.swift */; };
 		1C3C9DE1283F6D7F001F812F /* OCRASwiftTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3C9DDA283F6D7E001F812F /* OCRASwiftTest.swift */; };
@@ -41,6 +27,19 @@
 		1C8CFE61283D0B250045F23B /* VerifyRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE60283D0B250045F23B /* VerifyRegistration.swift */; };
 		1C8CFE65283D11F80045F23B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8CFE64283D11F80045F23B /* LoginController.swift */; };
 		1CA2453E28364C8F0013EF32 /* GeneralResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA2453D28364C8F0013EF32 /* GeneralResponse.swift */; };
+		1CA29C0C284D940700118214 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C09284D940700118214 /* UserInfo.swift */; };
+		1CA29C0D284D940700118214 /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C0A284D940700118214 /* UserInfoService.swift */; };
+		1CA29C0E284D940700118214 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C0B284D940700118214 /* Utils.swift */; };
+		1CA29C1C284DAF5600118214 /* HMACAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C11284DAF5600118214 /* HMACAlgorithm.swift */; };
+		1CA29C1D284DAF5600118214 /* QuestionFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C12284DAF5600118214 /* QuestionFormatter.swift */; };
+		1CA29C1E284DAF5600118214 /* AlgorithmFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C13284DAF5600118214 /* AlgorithmFactory.swift */; };
+		1CA29C1F284DAF5600118214 /* CounterFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C14284DAF5600118214 /* CounterFormat.swift */; };
+		1CA29C20284DAF5600118214 /* TimestampFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C15284DAF5600118214 /* TimestampFormat.swift */; };
+		1CA29C21284DAF5600118214 /* SessionInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C16284DAF5600118214 /* SessionInformation.swift */; };
+		1CA29C22284DAF5600118214 /* PasswordAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C17284DAF5600118214 /* PasswordAlgorithm.swift */; };
+		1CA29C23284DAF5600118214 /* OCRAGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C18284DAF5600118214 /* OCRAGenerator.swift */; };
+		1CA29C24284DAF5600118214 /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C1A284DAF5600118214 /* DataExtension.swift */; };
+		1CA29C25284DAF5600118214 /* StringExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA29C1B284DAF5600118214 /* StringExtenstion.swift */; };
 		1CACA6D42844E0020071EF6F /* SmartOTPTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CACA6D32844E0020071EF6F /* SmartOTPTest.swift */; };
 		1CB18C212848689500F635AA /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB18C202848689500F635AA /* Constant.swift */; };
 		1CB18C232848796F00F635AA /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB18C222848796F00F635AA /* NotificationService.swift */; };
@@ -90,19 +89,6 @@
 		1C38D245283DE45C0081B0C9 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		1C38D247283E26140081B0C9 /* TransactionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionController.swift; sourceTree = "<group>"; };
 		1C3C9D0B283F6C45001F812F /* digital-otp-ios-demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "digital-otp-ios-demo-Bridging-Header.h"; sourceTree = "<group>"; };
-		1C3C9DA9283F6CEA001F812F /* HMACAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMACAlgorithm.swift; sourceTree = "<group>"; };
-		1C3C9DAA283F6CEA001F812F /* QuestionFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionFormatter.swift; sourceTree = "<group>"; };
-		1C3C9DAB283F6CEA001F812F /* AlgorithmFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmFactory.swift; sourceTree = "<group>"; };
-		1C3C9DAC283F6CEA001F812F /* CounterFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterFormat.swift; sourceTree = "<group>"; };
-		1C3C9DAD283F6CEA001F812F /* TimestampFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimestampFormat.swift; sourceTree = "<group>"; };
-		1C3C9DAE283F6CEA001F812F /* SessionInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionInformation.swift; sourceTree = "<group>"; };
-		1C3C9DAF283F6CEA001F812F /* PasswordAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordAlgorithm.swift; sourceTree = "<group>"; };
-		1C3C9DB0283F6CEA001F812F /* OCRAGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRAGenerator.swift; sourceTree = "<group>"; };
-		1C3C9DB2283F6CEA001F812F /* DataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
-		1C3C9DB3283F6CEA001F812F /* StringExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtenstion.swift; sourceTree = "<group>"; };
-		1C3C9DB5283F6CEA001F812F /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
-		1C3C9DB6283F6CEA001F812F /* UserInfoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
-		1C3C9DB7283F6CEA001F812F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1C3C9DB9283F6CEA001F812F /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
 		1C3C9DCC283F6D08001F812F /* digital-otp-ios-demoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "digital-otp-ios-demoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C3C9DD8283F6D7E001F812F /* OCRASwiftTest5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRASwiftTest5.swift; sourceTree = "<group>"; };
@@ -120,6 +106,19 @@
 		1C8CFE60283D0B250045F23B /* VerifyRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyRegistration.swift; sourceTree = "<group>"; };
 		1C8CFE64283D11F80045F23B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1CA2453D28364C8F0013EF32 /* GeneralResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralResponse.swift; sourceTree = "<group>"; };
+		1CA29C09284D940700118214 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		1CA29C0A284D940700118214 /* UserInfoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
+		1CA29C0B284D940700118214 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		1CA29C11284DAF5600118214 /* HMACAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HMACAlgorithm.swift; sourceTree = "<group>"; };
+		1CA29C12284DAF5600118214 /* QuestionFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionFormatter.swift; sourceTree = "<group>"; };
+		1CA29C13284DAF5600118214 /* AlgorithmFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmFactory.swift; sourceTree = "<group>"; };
+		1CA29C14284DAF5600118214 /* CounterFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CounterFormat.swift; sourceTree = "<group>"; };
+		1CA29C15284DAF5600118214 /* TimestampFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimestampFormat.swift; sourceTree = "<group>"; };
+		1CA29C16284DAF5600118214 /* SessionInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionInformation.swift; sourceTree = "<group>"; };
+		1CA29C17284DAF5600118214 /* PasswordAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordAlgorithm.swift; sourceTree = "<group>"; };
+		1CA29C18284DAF5600118214 /* OCRAGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OCRAGenerator.swift; sourceTree = "<group>"; };
+		1CA29C1A284DAF5600118214 /* DataExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
+		1CA29C1B284DAF5600118214 /* StringExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtenstion.swift; sourceTree = "<group>"; };
 		1CACA6D32844E0020071EF6F /* SmartOTPTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartOTPTest.swift; sourceTree = "<group>"; };
 		1CB18C202848689500F635AA /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		1CB18C222848796F00F635AA /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -154,52 +153,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C3C9DD7283F6D53001F812F /* SwiftECC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C3C9DA7283F6CEA001F812F /* OCRA */ = {
-			isa = PBXGroup;
-			children = (
-				1C3C9DA8283F6CEA001F812F /* Algorithm */,
-				1C3C9DB0283F6CEA001F812F /* OCRAGenerator.swift */,
-				1C3C9DB1283F6CEA001F812F /* Extensions */,
-			);
-			path = OCRA;
-			sourceTree = "<group>";
-		};
-		1C3C9DA8283F6CEA001F812F /* Algorithm */ = {
-			isa = PBXGroup;
-			children = (
-				1C3C9DA9283F6CEA001F812F /* HMACAlgorithm.swift */,
-				1C3C9DAA283F6CEA001F812F /* QuestionFormatter.swift */,
-				1C3C9DAB283F6CEA001F812F /* AlgorithmFactory.swift */,
-				1C3C9DAC283F6CEA001F812F /* CounterFormat.swift */,
-				1C3C9DAD283F6CEA001F812F /* TimestampFormat.swift */,
-				1C3C9DAE283F6CEA001F812F /* SessionInformation.swift */,
-				1C3C9DAF283F6CEA001F812F /* PasswordAlgorithm.swift */,
-			);
-			path = Algorithm;
-			sourceTree = "<group>";
-		};
-		1C3C9DB1283F6CEA001F812F /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				1C3C9DB2283F6CEA001F812F /* DataExtension.swift */,
-				1C3C9DB3283F6CEA001F812F /* StringExtenstion.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		1C3C9DB4283F6CEA001F812F /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
-				1C3C9DB5283F6CEA001F812F /* UserInfo.swift */,
-				1C3C9DB6283F6CEA001F812F /* UserInfoService.swift */,
-				1C3C9DB7283F6CEA001F812F /* Utils.swift */,
+				1CA29C09284D940700118214 /* UserInfo.swift */,
+				1CA29C0A284D940700118214 /* UserInfoService.swift */,
+				1CA29C0B284D940700118214 /* Utils.swift */,
 			);
 			path = UserInfo;
 			sourceTree = "<group>";
@@ -256,7 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				1C3C9DB8283F6CEA001F812F /* ECC */,
-				1C3C9DA7283F6CEA001F812F /* OCRA */,
+				1CA29C0F284DAF5600118214 /* OCRA */,
 				1C3C9DB4283F6CEA001F812F /* UserInfo */,
 			);
 			path = ocra;
@@ -275,6 +240,39 @@
 				1CB18C262848D70B00F635AA /* SmartOTPStatus.swift */,
 			);
 			path = dto;
+			sourceTree = "<group>";
+		};
+		1CA29C0F284DAF5600118214 /* OCRA */ = {
+			isa = PBXGroup;
+			children = (
+				1CA29C10284DAF5600118214 /* Algorithm */,
+				1CA29C18284DAF5600118214 /* OCRAGenerator.swift */,
+				1CA29C19284DAF5600118214 /* Extensions */,
+			);
+			path = OCRA;
+			sourceTree = "<group>";
+		};
+		1CA29C10284DAF5600118214 /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				1CA29C11284DAF5600118214 /* HMACAlgorithm.swift */,
+				1CA29C12284DAF5600118214 /* QuestionFormatter.swift */,
+				1CA29C13284DAF5600118214 /* AlgorithmFactory.swift */,
+				1CA29C14284DAF5600118214 /* CounterFormat.swift */,
+				1CA29C15284DAF5600118214 /* TimestampFormat.swift */,
+				1CA29C16284DAF5600118214 /* SessionInformation.swift */,
+				1CA29C17284DAF5600118214 /* PasswordAlgorithm.swift */,
+			);
+			path = Algorithm;
+			sourceTree = "<group>";
+		};
+		1CA29C19284DAF5600118214 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1CA29C1A284DAF5600118214 /* DataExtension.swift */,
+				1CA29C1B284DAF5600118214 /* StringExtenstion.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1CB18C2C2849B67100F635AA /* constant */ = {
@@ -389,7 +387,6 @@
 			);
 			name = "digital-otp-ios-demo";
 			packageProductDependencies = (
-				1C3C9DD6283F6D53001F812F /* SwiftECC */,
 			);
 			productName = "digital-otp-ios-demo";
 			productReference = 1CB571E4283627AE0016A911 /* digital-otp-ios-demo.app */;
@@ -425,7 +422,6 @@
 			);
 			mainGroup = 1CB571DB283627AD0016A911;
 			packageReferences = (
-				1C3C9DD5283F6D53001F812F /* XCRemoteSwiftPackageReference "SwiftECC" */,
 			);
 			productRefGroup = 1CB571E5283627AE0016A911 /* Products */;
 			projectDirPath = "";
@@ -479,44 +475,44 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C3C9DC7283F6CEA001F812F /* KeychainItem.swift in Sources */,
+				1CA29C25284DAF5600118214 /* StringExtenstion.swift in Sources */,
 				1CC152DA28445B2C00B92420 /* AppConfig.swift in Sources */,
 				1CB18C232848796F00F635AA /* NotificationService.swift in Sources */,
 				1C34E8B2284A43D700E6B395 /* RegisterSMSOTPController.swift in Sources */,
+				1CA29C0D284D940700118214 /* UserInfoService.swift in Sources */,
+				1CA29C0E284D940700118214 /* Utils.swift in Sources */,
 				1C3C9DEC284069CF001F812F /* Sync.swift in Sources */,
+				1CA29C1D284DAF5600118214 /* QuestionFormatter.swift in Sources */,
 				1CB571EC283627AE0016A911 /* HomeController.swift in Sources */,
-				1C3C9DC3283F6CEA001F812F /* StringExtenstion.swift in Sources */,
-				1C3C9DC6283F6CEA001F812F /* Utils.swift in Sources */,
-				1C3C9DBA283F6CEA001F812F /* HMACAlgorithm.swift in Sources */,
-				1C3C9DC4283F6CEA001F812F /* UserInfo.swift in Sources */,
 				1CB18C212848689500F635AA /* Constant.swift in Sources */,
 				1CA2453E28364C8F0013EF32 /* GeneralResponse.swift in Sources */,
 				1C38D244283D14FE0081B0C9 /* ControllerUtils.swift in Sources */,
 				1CB57205283637640016A911 /* FAQ.swift in Sources */,
-				1C3C9DBE283F6CEA001F812F /* TimestampFormat.swift in Sources */,
-				1C3C9DBD283F6CEA001F812F /* CounterFormat.swift in Sources */,
 				1CB18C2B2849B51500F635AA /* ResponseStatusEnum.swift in Sources */,
+				1CA29C1F284DAF5600118214 /* CounterFormat.swift in Sources */,
 				1C38D246283DE45C0081B0C9 /* Registration.swift in Sources */,
 				1CB571E8283627AE0016A911 /* AppDelegate.swift in Sources */,
+				1CA29C1E284DAF5600118214 /* AlgorithmFactory.swift in Sources */,
+				1CA29C21284DAF5600118214 /* SessionInformation.swift in Sources */,
 				1C38D248283E26140081B0C9 /* TransactionController.swift in Sources */,
+				1CA29C23284DAF5600118214 /* OCRAGenerator.swift in Sources */,
+				1CA29C22284DAF5600118214 /* PasswordAlgorithm.swift in Sources */,
+				1CA29C1C284DAF5600118214 /* HMACAlgorithm.swift in Sources */,
 				1C3C9DEE2840706B001F812F /* AppUtils.swift in Sources */,
 				1C8CFE61283D0B250045F23B /* VerifyRegistration.swift in Sources */,
-				1C3C9DC0283F6CEA001F812F /* PasswordAlgorithm.swift in Sources */,
 				1CB571FE283627D50016A911 /* SmartOTPService.swift in Sources */,
 				1C3C9DF028407465001F812F /* Verify.swift in Sources */,
 				1CB18C302849C57200F635AA /* LoginSMSOTPController.swift in Sources */,
 				1C3C9DE7283F8938001F812F /* OTPPopUpController.swift in Sources */,
-				1C3C9DBF283F6CEA001F812F /* SessionInformation.swift in Sources */,
 				1CB18C272848D70B00F635AA /* SmartOTPStatus.swift in Sources */,
+				1CA29C20284DAF5600118214 /* TimestampFormat.swift in Sources */,
 				1C8CFE5F283D081A0045F23B /* CDCNAuth.swift in Sources */,
-				1C3C9DC5283F6CEA001F812F /* UserInfoService.swift in Sources */,
-				1C3C9DBC283F6CEA001F812F /* AlgorithmFactory.swift in Sources */,
 				1CB571EA283627AE0016A911 /* SceneDelegate.swift in Sources */,
+				1CA29C24284DAF5600118214 /* DataExtension.swift in Sources */,
 				1C8CFE65283D11F80045F23B /* LoginController.swift in Sources */,
+				1CA29C0C284D940700118214 /* UserInfo.swift in Sources */,
 				1CB18C2E2849B69000F635AA /* SegueEnum.swift in Sources */,
-				1C3C9DBB283F6CEA001F812F /* QuestionFormatter.swift in Sources */,
 				1CB18C252848A26C00F635AA /* AuthService.swift in Sources */,
-				1C3C9DC1283F6CEA001F812F /* OCRAGenerator.swift in Sources */,
-				1C3C9DC2283F6CEA001F812F /* DataExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +616,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -680,6 +677,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -708,6 +706,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LYZF537KR9;
@@ -719,7 +718,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -727,6 +726,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "vn.com.viettel.vds.digital-otp-ios-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "digital-otp-ios-demo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -741,6 +741,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LYZF537KR9;
@@ -753,7 +754,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -761,6 +762,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "vn.com.viettel.vds.digital-otp-ios-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "digital-otp-ios-demo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -799,25 +801,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		1C3C9DD5283F6D53001F812F /* XCRemoteSwiftPackageReference "SwiftECC" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/leif-ibsen/SwiftECC";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		1C3C9DD6283F6D53001F812F /* SwiftECC */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1C3C9DD5283F6D53001F812F /* XCRemoteSwiftPackageReference "SwiftECC" */;
-			productName = SwiftECC;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1CB571DC283627AD0016A911 /* Project object */;
 }

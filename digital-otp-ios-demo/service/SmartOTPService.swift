@@ -9,7 +9,7 @@ import Foundation
 
 struct SmartOTPService {
     let baseURL = "http://125.235.38.229:8080"
-    let userInfoService = UserInfoService()
+//    let baseURL = "http://localhost:8080"
     let keychain = KeychainItem()
     let defaults = UserDefaults.standard
     
@@ -61,7 +61,7 @@ struct SmartOTPService {
         guard let accessToken = defaults.string(forKey: Constant.ACCESS_TOKEN),
               let imei = defaults.string(forKey: Constant.IMEI),
               let msisdn = defaults.string(forKey: Constant.MSISDN),
-              let appPublicKey = userInfoService.generatePublicECKey(msisdn: msisdn),
+              let appPublicKey = UserInfoService.shared.generatePublicECKey(msisdn: msisdn, force: false),
               let url = URL(string: baseURL.appending("/digital-otp/public/v1/users/register")) else {
             fatalError("Failed to register.")
         }
@@ -91,7 +91,7 @@ struct SmartOTPService {
                 guard let serverPublicKey = response.data?.server_key else {
                     fatalError("register(): Invalid response \(String(describing: response)).")
                 }
-                userInfoService.saveKeys(msisdn: msisdn, serverPublicKey: serverPublicKey, syncTime: AppUtils.currentTime())
+                UserInfoService.shared.saveKeys(msisdn: msisdn, serverPublicKey: serverPublicKey, syncTime: AppUtils.currentTime())
                 defaults.set(true, forKey: Constant.USER_STATUS)
                 completion(response)
             default:
@@ -135,6 +135,10 @@ struct SmartOTPService {
             guard let isSuccess = response?.data else {
                 fatalError("Invalid response: \(response)")
             }
+            
+            // 794e547edc31528627a7b94ef27d4283e9c9c41e5aafaaf86d9334b4be0f4aa0
+            // 794e547edc31528627a7b94ef27d4283e9c9c41e5aafaaf86d9334b4be0f4aa0
+            
             defaults.set(false, forKey: Constant.USER_STATUS)
             do {
                 try keychain.deleteData(by: msisdn)

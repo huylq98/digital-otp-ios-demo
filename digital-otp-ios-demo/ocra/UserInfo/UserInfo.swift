@@ -13,8 +13,8 @@ public class UserInfo: Codable {
     var privateKey: String?
     var publicKey: String?
     var serverPublicKey: String?
-    var status: Bool = false
-    var syncTime: Int = AppUtils.currentTime()
+    var status: Bool = true
+    var syncTime: Int = 0
 
     public init(userId: String) {
         msisdn = userId

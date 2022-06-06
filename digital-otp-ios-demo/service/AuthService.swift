@@ -52,7 +52,7 @@ class AuthService {
                     SmartOTPService.shared.isRegisteredDigitalOTP() { isRegistered in
                         if isRegistered {
                             SmartOTPService.shared.sync (isRegistered: isRegistered) { serverTime in
-                                self.defaults.set(serverTime - AppUtils.currentTime(), forKey: Constant.DELTA_TIME)
+                                UserInfoService.shared.syncTime(msisdn: msisdn, syncTime: serverTime - AppUtils.currentTime())
                             }
                         }
                     }

@@ -127,6 +127,7 @@ class HomeController: UIViewController {
     }
     
     private func updateRegisterButton() {
+        ControllerUtils.showSpinner(onView: view, &spinner)
         SmartOTPService.shared.isRegisteredDigitalOTP() { isRegistered in
             if isRegistered {
                 print("Digital OTP Registered.")
@@ -142,6 +143,9 @@ class HomeController: UIViewController {
                     self.registerButton.isEnabled = true
                     self.deregisterButton.isEnabled = false
                 }
+            }
+            ControllerUtils.removeSpinner(self.spinner) {
+                self.spinner = nil
             }
         }
     }

@@ -13,7 +13,6 @@ class OTPPopUpController: UIViewController {
     @IBOutlet weak var generatedOTPLabel: UILabel!
     @IBOutlet weak var countdownLabel: UILabel!
     
-    let userInfoService = UserInfoService()
     var timer = Timer()
     var totalTime = 60
     var generatedOTP: String?
@@ -25,7 +24,7 @@ class OTPPopUpController: UIViewController {
             fatalError("popupController: msisdn not found.")
         }
         transactionInfoLabel.text = "Xác nhận chuyển 1.000đ cho số điện thoại \(msisdn), phí GD 0đ."
-        generatedOTP = userInfoService.generateOTP(msisdn: msisdn, question: AppConfig.shared.transID, pinOtp: AppConfig.shared.smartOTPPin)
+        generatedOTP = UserInfoService.shared.generateOTP(msisdn: msisdn, question: AppConfig.shared.transID, pinOtp: AppConfig.shared.smartOTPPin)
         print("Generated OTP: \(generatedOTP)")
         generatedOTPLabel.text = generatedOTP
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: (#selector(OTPPopUpController.countdown)), userInfo: nil, repeats: true)

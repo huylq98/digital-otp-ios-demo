@@ -35,6 +35,17 @@ class OCRATests: XCTestCase {
         testCases = []
         super.tearDown()
     }
+    
+    func testOCRA100() {
+        let ocra = OCRASuite(ocraSuite: "OCRA-1:HOTP-SHA256-6:QA06-PSHA256-T30S", seed: "794e547edc31528627a7b94ef27d4283e9c9c41e5aafaaf86d9334b4be0f4aa0", counter: "", question: "123456", password: "123321", sessionInformation: "", timeStamp: 0, otpExpected: "721293")
+        let generator: OCRABuilderInterface = OCRAGenerator()
+            .accept(suite: ocra.ocraSuite, key: ocra.seed)
+            .params(counter: ocra.counter, question: ocra.question, password: ocra.password)
+            .sessionWith(sessionInfo: ocra.sessionInformation, timestamp: ocra.timeStamp)
+
+        let otpCode = generator.generateOTP()
+        XCTAssertEqual(otpCode, ocra.otpExpected)
+    }
 
     func testOCRA1() {
         let ocra = testCases[0]

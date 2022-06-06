@@ -7,7 +7,6 @@
 
 import CryptoKit
 import Foundation
-import SwiftECC
 
 protocol UserInfoServiceAPI {
     // Map<String, String> generateOTP(Context context, String msisdn, String question, String pinOtp)
@@ -30,9 +29,11 @@ class UserInfoService: UserInfoServiceAPI {
     let ocraSuite: String = AppConfig.shared.ocraSuite // TODO: hardcode
     let ocraCounter: String = "" // TODO: hardcode
     let sessionInfo: String = "" // TODO: hardcode
-    var timestamp: Int = AppUtils.currentTime() // TODO: hardcode
     var generator: OCRABuilderInterface?
     let keychain = KeychainItem()
+    
+    private init(){}
+    static let shared: UserInfoServiceAPI = UserInfoService()
 
     func generateOTP(msisdn: String, question: String, pinOtp: String) -> String? {
         var user: UserInfo
@@ -49,12 +50,16 @@ class UserInfoService: UserInfoServiceAPI {
             sharedKey = getShared(by: user)
         }
         guard let sharedKey = sharedKey else { return nil }
+
+        print("sharedKey = \(sharedKey)")
+        let timeStamp = AppUtils.currentTime() + user.syncTime
+        print("timeStamp = \(timeStamp)")
         
-        timestamp = AppUtils.currentTime()
+        // 3308980042285
         generator = OCRAGenerator()
             .accept(suite: ocraSuite, key: sharedKey)
             .params(counter: ocraCounter, question: question, password: pinOtp)
-            .sessionWith(sessionInfo: sessionInfo, timestamp: timestamp)
+            .sessionWith(sessionInfo: sessionInfo, timestamp: timeStamp)
         return generator?.generateOTP()
     }
 
@@ -69,7 +74,7 @@ class UserInfoService: UserInfoServiceAPI {
 
     func syncTime(msisdn: String, syncTime: Int) {
         guard let userData = try? keychain.readData(by: msisdn) else {
-            fatalError("User's data not found: \(msisdn)")
+            return
         }
         userData.syncTime = syncTime
         try? keychain.saveData(of: userData)
@@ -88,22 +93,77 @@ class UserInfoService: UserInfoServiceAPI {
     }
 
     func generateKeyPair(saveId msisdn: String) -> [UInt8]? {
-        let domain = Domain.instance(curve: .EC256r1)
-        let (publicKey, privateKey): (ECPublicKey, ECPrivateKey) = domain.makeKeyPair()
+        var privateKeyData: Data?
+        var publicKeyHexString: String?
+
+        if #available(iOS 14.0, *) {
+            let privateKey = P256.KeyAgreement.PrivateKey()
+            let publicKey = privateKey.publicKey
+            privateKeyData = privateKey.derRepresentation
+            publicKeyHexString = publicKey.derRepresentation.hexaAsString
+
+        } else {
+            var error: Unmanaged<CFError>?
+            let keyPairAttr: [String: Any] = [kSecAttrKeySizeInBits as String: 256,
+                                              SecKeyKeyExchangeParameter.requestedSize.rawValue as String: getSeedLenght(),
+                                              kSecAttrKeyType as String: kSecAttrKeyTypeECSECPrimeRandom,
+                                              kSecAttrKeyClass as String: kSecAttrKeyClassPublic,
+                                              kSecPrivateKeyAttrs as String: [kSecAttrIsPermanent as String: false],
+                                              kSecPublicKeyAttrs as String: [kSecAttrIsPermanent as String: false]]
+
+            guard let privateKey = SecKeyCreateRandomKey(keyPairAttr as CFDictionary, &error),
+                  let privateKeyAsData: Data = SecKeyCopyExternalRepresentation(privateKey, &error) as? Data,
+                  let publicKey = SecKeyCopyPublicKey(privateKey), let publicKeyAsHexString = try? CodeableUtil.shared.convertSecKeyToDerKeyFormat(key: publicKey) else {
+                return nil
+            }
+
+            privateKeyData = privateKeyAsData
+            publicKeyHexString = publicKeyAsHexString
+        }
+
         let userData = UserInfo(userId: msisdn)
-        userData.publicKey = publicKey.der.hexaAsString
-        userData.privateKey = privateKey.derPkcs8.hexaAsString
+        userData.publicKey = publicKeyHexString
+        userData.privateKey = privateKeyData?.hexaAsString
+        userData.syncTime = Int(Date().timeIntervalSince1970 * 1000)
         guard (try? keychain.saveData(of: userData)) != nil else { return nil }
-        return publicKey.der
+        return userData.publicKey?.hexaBytes
     }
 
     func getShared(by user: UserInfo) -> String? {
-        let info: Bytes = []
-        guard let privateKey = user.privateKey?.hexaBytes, let serverPublicKey = user.serverPublicKey?.hexaBytes,
-              let userPrivateECCKey = try? ECPrivateKey(der: privateKey, pkcs8: true),
-              let serverPublicECCKey = try? ECPublicKey(der: serverPublicKey) else { return nil }
-        let secretKey = try? userPrivateECCKey.keyAgreement(pubKey: serverPublicECCKey, length: getSeedLenght(), md: .SHA2_256, sharedInfo: info)
-        return secretKey?.hexaAsString
+        var error: Unmanaged<CFError>?
+        let keyPairAttr: [String: Any] = [kSecAttrKeySizeInBits as String: 256,
+                                          SecKeyKeyExchangeParameter.requestedSize.rawValue as String: getSeedLenght(),
+                                          kSecAttrKeyType as String: kSecAttrKeyTypeEC,
+                                          kSecAttrKeyClass as String: kSecAttrKeyClassPublic,
+                                          kSecPrivateKeyAttrs as String: [kSecAttrIsPermanent as String: false],
+                                          kSecPublicKeyAttrs as String: [kSecAttrIsPermanent as String: false]]
+        let algorithm = SecKeyAlgorithm.ecdhKeyExchangeStandard
+
+        guard let privateKeyData = user.privateKey?.hexaData,
+              let privateKey = SecKeyCreateWithData(privateKeyData as CFData, [
+                  kSecAttrKeyType as String: kSecAttrKeyTypeECSECPrimeRandom,
+                  kSecAttrKeyClass as String: kSecAttrKeyClassPrivate,
+              ] as CFDictionary, &error) else {
+            return nil
+        }
+
+        let mutableData = CFDataCreateMutable(kCFAllocatorDefault, CFIndex(0))
+        if mutableData != nil, let serverPublicData = user.serverPublicKey?.hexaData {
+            CFDataAppendBytes(mutableData, CFDataGetBytePtr(serverPublicData as CFData), CFDataGetLength(serverPublicData as CFData))
+            CFDataDeleteBytes(mutableData, CFRangeMake(CFIndex(0), 26))
+
+            guard let serverPublicKey = SecKeyCreateWithData(mutableData! as CFData,
+                                                             [kSecAttrKeyType as String: kSecAttrKeyTypeECSECPrimeRandom,
+                                                              kSecAttrKeyClass as String: kSecAttrKeyClassPublic] as CFDictionary,
+                                                             &error) else {
+                return nil
+            }
+
+            let shared: CFData? = SecKeyCopyKeyExchangeResult(privateKey, algorithm, serverPublicKey, keyPairAttr as CFDictionary, &error)
+            let sharedData: Data = shared! as Data
+            return sharedData.hexaAsString
+        }
+        return nil
     }
 
     @available(iOS 14.0, *)
