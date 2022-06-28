@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct VerifyRegistration {
+enum VerifyRegistration {
     struct Request: Codable {
         init(h: String, appKey: String, otp: String) {
             self.h = h

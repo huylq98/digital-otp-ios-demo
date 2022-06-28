@@ -15,17 +15,15 @@ class OTPPopUpController: UIViewController {
     
     var timer = Timer()
     var totalTime = 60
+    var receivedPhoneNumber: String?
+    var amount: String?
+    var transID: String?
     var generatedOTP: String?
     let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let msisdn = defaults.string(forKey: Constant.MSISDN) else {
-            fatalError("popupController: msisdn not found.")
-        }
-        transactionInfoLabel.text = "Xác nhận chuyển 1.000đ cho số điện thoại \(msisdn), phí GD 0đ."
-        generatedOTP = UserInfoService.shared.generateOTP(msisdn: msisdn, question: AppConfig.shared.transID, pinOtp: AppConfig.shared.smartOTPPin)
-        print("Generated OTP: \(generatedOTP)")
+        transactionInfoLabel.text = "Xác nhận chuyển \(amount!)đ cho số điện thoại \(receivedPhoneNumber!), phí GD 0đ."
         generatedOTPLabel.text = generatedOTP
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: (#selector(OTPPopUpController.countdown)), userInfo: nil, repeats: true)
     }
@@ -41,7 +39,10 @@ class OTPPopUpController: UIViewController {
     }
     
     @IBAction func confirmButtonPressed(_ sender: UIButton) {
-        SmartOTPService.shared.verify(transId: AppConfig.shared.transID, otp: generatedOTP) { isVerified in
+        guard let transID = transID else {
+            fatalError("Invalid transID.")
+        }
+        SmartOTPService.shared.verify(transId: transID, otp: generatedOTP) { isVerified in
             if(isVerified) {
                 DispatchQueue.main.sync {
                     let alert = UIAlertController(title: "Thành công!", message: "Bạn đã thực hiện chuyển tiền thành công.", preferredStyle: .alert)

@@ -15,5 +15,4 @@ struct AppConfig {
 
     // Fake PIN
     let smartOTPPin = "123321"
-    let transID: String = "123456"
 }

@@ -15,7 +15,7 @@ class OCRASwiftTests5: XCTestCase {
         super.setUp()
         testCases.append(contentsOf: [
             // suite5
-            OCRASuite(ocraSuite: suite5, seed: seed64, counter: "", question: "00000000", password: "", sessionInformation: "", timeStamp: Int(Date().timeIntervalSince1970 * 1000), otpExpected: "95209754"),
+            OCRASuite(ocraSuite: suite5, seed: seed64, counter: "", question: "00000000", password: "", sessionInformation: "", timeStamp: 1206446790000, otpExpected: "95209754"),
             OCRASuite(ocraSuite: suite5, seed: seed64, counter: "", question: "11111111", password: "", sessionInformation: "", timeStamp: 1206446790000, otpExpected: "55907591"),
             OCRASuite(ocraSuite: suite5, seed: seed64, counter: "", question: "22222222", password: "", sessionInformation: "", timeStamp: 1206446790000, otpExpected: "22048402"),
             OCRASuite(ocraSuite: suite5, seed: seed64, counter: "", question: "33333333", password: "", sessionInformation: "", timeStamp: 1206446790000, otpExpected: "24218844"),

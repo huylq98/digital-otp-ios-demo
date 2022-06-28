@@ -32,12 +32,6 @@ class TransactionController: UIViewController {
             fatalError("Transaction confirmation: imei not found.")
         }
         checkRegisterDiginalOTP(msisdn: msisdn, imei: imei, sender)
-        guard let receivedPhoneNumber = receivedPhoneNumber.text else {
-            fatalError("Transaction confirmation: receivedPhoneNumber not found.")
-        }
-        guard let amount = amount.text else {
-            fatalError("Transaction confirmation: amount not found.")
-        }
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
@@ -61,6 +55,28 @@ class TransactionController: UIViewController {
                     self.performSegue(withIdentifier: SegueEnum.TO_POP_UP_CONTROLLER.rawValue, sender: sender)
                 }
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let msisdn = defaults.string(forKey: Constant.MSISDN) else {
+            fatalError("popupController: msisdn not found.")
+        }
+        
+        guard let receivedPhoneNumber = receivedPhoneNumber.text else {
+            fatalError("Transaction confirmation: receivedPhoneNumber not found.")
+        }
+        guard let amount = amount.text else {
+            fatalError("Transaction confirmation: amount not found.")
+        }
+        let transID = UUID().uuidString
+        if segue.identifier == SegueEnum.TO_POP_UP_CONTROLLER.rawValue {
+            let destinationVC = segue.destination as! OTPPopUpController
+            destinationVC.generatedOTP = UserInfoService.shared.generateOTP(msisdn: msisdn, question: transID, pinOtp: AppConfig.shared.smartOTPPin)
+            destinationVC.receivedPhoneNumber = receivedPhoneNumber
+            destinationVC.amount = amount
+            destinationVC.transID = transID
+            print("Generated OTP: \(destinationVC.generatedOTP)")
         }
     }
     

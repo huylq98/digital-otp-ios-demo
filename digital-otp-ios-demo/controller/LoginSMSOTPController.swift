@@ -20,7 +20,7 @@ class LoginSMSOTPController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        informationText.text = "Vui lòng nhập mã OTP được gửi về SĐT \(defaults.string(forKey: Constant.MSISDN ?? "")) để đăng nhập"
+        informationText.text = "Vui lòng nhập mã OTP được gửi về SĐT \(defaults.string(forKey: Constant.MSISDN)!) để đăng nhập"
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(LoginSMSOTPController.countdown), userInfo: nil, repeats: true)
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tap)

@@ -25,9 +25,6 @@ class OCRATests: XCTestCase {
             OCRASuite(ocraSuite: suite1, seed: seed20, counter: "", question: "77777777", password: "", sessionInformation: "", timeStamp: 0, otpExpected: "224598"),
             OCRASuite(ocraSuite: suite1, seed: seed20, counter: "", question: "88888888", password: "", sessionInformation: "", timeStamp: 0, otpExpected: "750600"),
             OCRASuite(ocraSuite: suite1, seed: seed20, counter: "", question: "99999999", password: "", sessionInformation: "", timeStamp: 0, otpExpected: "294470"),
-
-            // OCRASuite(ocraSuite: "", seed: "", counter: "", question: "", password: "", sessionInformation: "", timeStamp: 0, otpExpected: ""),
-
         ])
     }
 

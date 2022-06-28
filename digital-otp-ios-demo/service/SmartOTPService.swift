@@ -94,7 +94,10 @@ struct SmartOTPService {
                 guard let serverPublicKey = response.data?.serverKey else {
                     fatalError("register(): Invalid response \(String(describing: response)).")
                 }
-                UserInfoService.shared.saveKeys(msisdn: msisdn, serverPublicKey: serverPublicKey, syncTime: AppUtils.currentTime())
+                guard let serverTime = response.data?.serverTime else {
+                    fatalError("register(): Invalid response.")
+                }
+                UserInfoService.shared.saveKeys(msisdn: msisdn, serverPublicKey: serverPublicKey, syncTime: serverTime - AppUtils.currentTime())
                 defaults.set(true, forKey: Constant.USER_STATUS)
                 completion(response)
             default:

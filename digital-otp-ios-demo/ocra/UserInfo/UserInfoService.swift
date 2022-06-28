@@ -8,7 +8,7 @@
 import CryptoKit
 import Foundation
 
-protocol UserInfoServiceAPI {
+public protocol UserInfoServiceAPI {
     // Map<String, String> generateOTP(Context context, String msisdn, String question, String pinOtp)
     // TODO: Check time
     func generateOTP(msisdn: String, question: String, pinOtp: String) -> String?
@@ -25,17 +25,17 @@ protocol UserInfoServiceAPI {
     func getShared(by user: UserInfo) -> String?
 }
 
-class UserInfoService: UserInfoServiceAPI {
-    let ocraSuite: String = AppConfig.shared.ocraSuite // TODO: hardcode
+public class UserInfoService: UserInfoServiceAPI {
+    let ocraSuite: String = "OCRA-1:HOTP-SHA256-6:QA06-PSHA256-T30S" // TODO: hardcode
     let ocraCounter: String = "" // TODO: hardcode
     let sessionInfo: String = "" // TODO: hardcode
     var generator: OCRABuilderInterface?
     let keychain = KeychainItem()
     
     private init(){}
-    static let shared: UserInfoServiceAPI = UserInfoService()
+    public static let shared = UserInfoService()
 
-    func generateOTP(msisdn: String, question: String, pinOtp: String) -> String? {
+    public func generateOTP(msisdn: String, question: String, pinOtp: String) -> String? {
         var user: UserInfo
         do {
             user = try keychain.readData(by: msisdn)
@@ -51,11 +51,13 @@ class UserInfoService: UserInfoServiceAPI {
         }
         guard let sharedKey = sharedKey else { return nil }
 
+        print("app privateKey = \(user.privateKey)")
+        print("app publicKey = \(user.publicKey)")
+        print("server publicKey = \(user.serverPublicKey)")
         print("sharedKey = \(sharedKey)")
-        let timeStamp = AppUtils.currentTime() // TODO: + user.syncTime
+        let timeStamp = AppUtils.currentTime() + user.syncTime
         print("timeStamp = \(timeStamp)")
         
-        // 3308980042285
         generator = OCRAGenerator()
             .accept(suite: ocraSuite, key: sharedKey)
             .params(counter: ocraCounter, question: question, password: pinOtp)
@@ -63,7 +65,7 @@ class UserInfoService: UserInfoServiceAPI {
         return generator?.generateOTP()
     }
 
-    func saveKeys(msisdn: String, serverPublicKey: String, syncTime: Int) {
+    public func saveKeys(msisdn: String, serverPublicKey: String, syncTime: Int) {
         guard let userData = try? keychain.readData(by: msisdn) else {
             fatalError("User's data not found: \(msisdn)")
         }
@@ -72,7 +74,7 @@ class UserInfoService: UserInfoServiceAPI {
         try? keychain.saveData(of: userData)
     }
 
-    func syncTime(msisdn: String, syncTime: Int) {
+    public func syncTime(msisdn: String, syncTime: Int) {
         guard let userData = try? keychain.readData(by: msisdn) else {
             return
         }
@@ -80,7 +82,7 @@ class UserInfoService: UserInfoServiceAPI {
         try? keychain.saveData(of: userData)
     }
 
-    func generatePublicECKey(msisdn: String, force: Bool = false) -> [UInt8]? {
+    public func generatePublicECKey(msisdn: String, force: Bool = false) -> [UInt8]? {
         if force {
             return generateKeyPair(saveId: msisdn)
         }
@@ -129,7 +131,7 @@ class UserInfoService: UserInfoServiceAPI {
         return userData.publicKey?.hexaBytes
     }
 
-    func getShared(by user: UserInfo) -> String? {
+    public func getShared(by user: UserInfo) -> String? {
         var error: Unmanaged<CFError>?
         let keyPairAttr: [String: Any] = [kSecAttrKeySizeInBits as String: 256,
                                           SecKeyKeyExchangeParameter.requestedSize.rawValue as String: getSeedLenght(),
@@ -167,7 +169,7 @@ class UserInfoService: UserInfoServiceAPI {
     }
 
     @available(iOS 14.0, *)
-    func getSharedNative(by user: UserInfo) -> String? {
+    public func getSharedNative(by user: UserInfo) -> String? {
         guard let privateKey = user.privateKey?.hexaBytes, let serverPublicKey = user.serverPublicKey?.hexaBytes,
               let userPrivateKey = try? P256.KeyAgreement.PrivateKey(derRepresentation: privateKey),
               let serverPublicKey = try? P256.KeyAgreement.PublicKey(derRepresentation: serverPublicKey),
